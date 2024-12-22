@@ -122,7 +122,7 @@ public class ArsProviders {
         }
 
         @Override
-        public String getName() {
+        public @NotNull String getName() {
             return "Starbunclemania Apparatus";
         }
     }
@@ -189,6 +189,14 @@ public class ArsProviders {
                             .withTextPage("starbunclemania.page.wixie_cut")
                     , getPath(AUTOMATION, "wixie_jobs"));
 
+            addPage(new PatchouliBuilder(EQUIPMENT, STARBY_EARS.get()).withName("starbunclemania.player_cosmetic")
+                            .withTextPage("starbunclemania.page.player_cosmetic")
+                            .withPage(new CraftingPage(STARBY_EARS.get()))
+                            .withPage(new CraftingPage(ALAK_HAT.get()).withRecipe2(SEA_BUNNY.get()))
+                            .withPage(new CraftingPage(DRYGMY_HORNS.get()).withRecipe2(WHIRLI_PROP.get()))
+                    , getPath(EQUIPMENT, "player_cosmetic"));
+
+
             for (PatchouliPage patchouliPage : pages) {
                 saveStable(cache, patchouliPage.build(), patchouliPage.path());
             }
@@ -233,7 +241,7 @@ public class ArsProviders {
          * Gets a name for this provider, to use in logging.
          */
         @Override
-        public String getName() {
+        public @NotNull String getName() {
             return "StarbuncleMania Patchouli Datagen";
         }
 

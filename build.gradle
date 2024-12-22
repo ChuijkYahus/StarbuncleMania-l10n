@@ -175,8 +175,6 @@ dependencies {
 //    implementation ("com.simibubi.create:create-1.20.1:0.5.1.f-26:all") { transitive = false }
 //    implementation ("curse.maven:eidolon-repraised-870250:5207777")
     implementation "curse.maven:farmers-delight-398521:5772720"
-
-    localRuntime "curse.maven:ars-nouveaus-flavors-delight-1131668:5877236"
 }
 
 jar {

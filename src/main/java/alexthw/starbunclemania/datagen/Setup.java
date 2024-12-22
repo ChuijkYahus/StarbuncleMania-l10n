@@ -36,6 +36,8 @@ public class Setup {
         gen.addProvider(event.includeServer(), new ArsProviders.EnchantingAppProvider(gen));
 
         gen.addProvider(event.includeServer(), new ArsProviders.StarPatchouliProvider(gen));
+
+        gen.addProvider(event.includeServer(), new StarCurioProvider(gen.getPackOutput(), event.getExistingFileHelper(), event.getLookupProvider()));
     }
 
 }

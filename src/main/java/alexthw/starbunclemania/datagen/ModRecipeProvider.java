@@ -107,9 +107,47 @@ public class ModRecipeProvider extends RecipeProvider {
         shapelessBuilder(FLUID_SCROLL_ALLOW.get()).requires(FLUID_SCROLL_ALLOW.get()).save(consumer, prefix("clear_fluid_allow"));
         shapelessBuilder(FLUID_SCROLL_DENY.get()).requires(FLUID_SCROLL_DENY.get()).save(consumer, prefix("clear_fluid_deny"));
 
+        // cosmetic curios
+        shaped(STARBY_EARS)
+                .define('W', Items.LIGHT_BLUE_WOOL)
+                .define('F', ItemsRegistry.MAGE_FIBER)
+                .pattern("W W")
+                .pattern("W W")
+                .pattern(" F ")
+                .save(consumer);
+
+        shaped(ALAK_HAT)
+                .define('S', Items.SANDSTONE)
+                .define('F', ItemsRegistry.MAGE_FIBER)
+                .pattern("SSS")
+                .pattern("S S")
+                .pattern("SFS")
+                .save(consumer);
+
+        shaped(SEA_BUNNY)
+                .define('W', Items.WHITE_WOOL)
+                .define('F', ItemsRegistry.MAGE_FIBER)
+                .pattern("WWF")
+                .pattern("WWF")
+                .save(consumer);
+
+        shaped(DRYGMY_HORNS)
+                .define('W', Items.BROWN_WOOL)
+                .define('F', ItemsRegistry.MAGE_FIBER)
+                .pattern("W W")
+                .pattern("W W")
+                .pattern(" F ")
+                .save(consumer);
+
+        shaped(WHIRLI_PROP)
+                .define('W', Items.GREEN_WOOL)
+                .define('F', ItemsRegistry.MAGE_FIBER)
+                .pattern("W W")
+                .pattern(" F ")
+                .save(consumer);
     }
 
-    public ShapedRecipeBuilder shaped(DeferredHolder<Item, Item> result) {
+    public ShapedRecipeBuilder shaped(DeferredHolder<Item, ? extends Item> result) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result.get()).unlockedBy("has_journal", InventoryChangeTrigger.TriggerInstance.hasItems(ItemsRegistry.WORN_NOTEBOOK));
     }
 

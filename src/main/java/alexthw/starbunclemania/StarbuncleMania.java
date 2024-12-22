@@ -1,5 +1,6 @@
 package alexthw.starbunclemania;
 
+import alexthw.starbunclemania.common.item.cosmetic.PlayerCurioCosmetic;
 import alexthw.starbunclemania.registry.ModRegistry;
 import alexthw.starbunclemania.registry.SourceFluid;
 import com.hollingsworth.arsnouveau.ArsNouveau;
@@ -35,6 +36,7 @@ public class StarbuncleMania {
         modbus.addListener(this::setup);
         if (FMLEnvironment.dist.isClient()) {
             new SourceFluid.FluidTypeSourceClient(modbus);
+            modbus.addListener(PlayerCurioCosmetic::registerRenderers);
         }
     }
 
