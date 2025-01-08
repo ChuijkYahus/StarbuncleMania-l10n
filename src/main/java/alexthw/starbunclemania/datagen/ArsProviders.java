@@ -4,9 +4,7 @@ import alexthw.starbunclemania.ArsNouveauRegistry;
 import alexthw.starbunclemania.StarbuncleMania;
 import alexthw.starbunclemania.glyph.PickupFluidEffect;
 import alexthw.starbunclemania.glyph.PlaceFluidEffect;
-import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.hollingsworth.arsnouveau.api.familiar.AbstractFamiliarHolder;
-import com.hollingsworth.arsnouveau.api.registry.FamiliarRegistry;
 import com.hollingsworth.arsnouveau.api.spell.AbstractCastMethod;
 import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
@@ -14,7 +12,6 @@ import com.hollingsworth.arsnouveau.common.crafting.recipes.EnchantingApparatusR
 import com.hollingsworth.arsnouveau.common.crafting.recipes.GlyphRecipe;
 import com.hollingsworth.arsnouveau.common.datagen.*;
 import com.hollingsworth.arsnouveau.common.datagen.patchouli.*;
-import com.hollingsworth.arsnouveau.common.lib.LibEntityNames;
 import com.hollingsworth.arsnouveau.setup.registry.ItemsRegistry;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.data.CachedOutput;
@@ -84,13 +81,6 @@ public class ArsProviders {
 
         @Override
         public void addEntries() {
-
-            recipes.add(builder().withReagent(Items.BOOK)
-                    .withResult(FamiliarRegistry.getFamiliarScriptMap().get(ResourceLocation.fromNamespaceAndPath(ArsNouveau.MODID, LibEntityNames.FAMILIAR_BOOKWYRM)))
-                    .withPedestalItem(3, Items.IRON_INGOT)
-                    .withPedestalItem(3, ItemTagProvider.SOURCE_GEM_TAG)
-                    .build()
-            );
 
             recipes.add(builder()
                     .withReagent(FLUID_JAR.get())
