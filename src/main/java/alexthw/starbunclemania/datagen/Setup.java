@@ -38,6 +38,8 @@ public class Setup {
         gen.addProvider(event.includeServer(), new ArsProviders.StarPatchouliProvider(gen, event.getLookupProvider()));
 
         gen.addProvider(event.includeServer(), new StarCurioProvider(gen.getPackOutput(), event.getExistingFileHelper(), event.getLookupProvider()));
+        gen.addProvider(event.includeServer(), new DatamapProvider(gen.getPackOutput(), event.getLookupProvider()));
+        gen.addProvider(event.includeServer(), new MekaTagsProvider(gen.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper()));
     }
 
 }

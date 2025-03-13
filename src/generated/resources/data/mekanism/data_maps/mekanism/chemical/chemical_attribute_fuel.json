@@ -1,7 +1,7 @@
 {
   "values": {
     "starbunclemania:source_gas": {
-      "burn_time": 20,
+      "burn_time": 10,
       "energy": 200
     }
   }
