@@ -44,7 +44,7 @@ public class GasStoreGoal extends GoToPosGoal<StarbyGasBehavior> {
                 return true;
             }
             int diff = (int) Math.min(room, behavior.getGasStack().getAmount());
-            ChemicalStack fill = new ChemicalStack(behavior.getGasStack().getChemicalHolder(), diff);
+            ChemicalStack fill = behavior.getGasStack().copyWithAmount(diff);
             behavior.setGasStack(gasHandler.insertChemical(fill, Action.EXECUTE));
             starbuncle.level().playSound(null, targetPos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.NEUTRAL, 0.2f, 1.3f);
             starbuncle.addGoalDebug(this, new DebugEvent("stored_gas", "successful at " + targetPos.toString() + "set gas stack to " + diff + "x " + fill.getChemicalHolder().getRegisteredName()));

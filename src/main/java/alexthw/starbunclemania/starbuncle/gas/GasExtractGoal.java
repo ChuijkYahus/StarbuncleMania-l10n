@@ -11,7 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 
-public class GasExtractGoal extends GoToPosGoal<StarbyGasBehavior>{
+public class GasExtractGoal extends GoToPosGoal<StarbyGasBehavior> {
 
     public GasExtractGoal(Starbuncle starbuncle, StarbyGasBehavior behavior) {
         super(starbuncle, behavior, () -> behavior.getGasStack().isEmpty());
@@ -37,16 +37,16 @@ public class GasExtractGoal extends GoToPosGoal<StarbyGasBehavior>{
         IChemicalHandler gasHandlerExtract = behavior.getHandlerFromCap(targetPos, behavior.FROM_DIRECTION_MAP.get(targetPos.hashCode()));
 
         int tankIndexE = 0;
-        if (gasHandlerExtract != null){
+        if (gasHandlerExtract != null) {
             ChemicalStack toExtract = gasHandlerExtract.getChemicalInTank(tankIndexE);
-            BlockPos pos = behavior.getTankForStorage(new ChemicalStack(toExtract.getChemicalHolder(), behavior.getRatio()));
+            BlockPos pos = behavior.getTankForStorage(toExtract.copyWithAmount(behavior.getRatio()));
             if (pos == null) {
                 starbuncle.addGoalDebug(this, new DebugEvent("NoRoom", "No Room for " + toExtract.getChemicalHolder().getRegisteredName() + " from " + targetPos.toString()));
                 return true;
             }
             IChemicalHandler gasHandlerStore = behavior.getHandlerFromCap(pos, behavior.TO_DIRECTION_MAP.get(pos.hashCode()));
 
-            if (gasHandlerStore != null){
+            if (gasHandlerStore != null) {
                 long maxRoom = -1;
                 for (int s = 0; s < gasHandlerStore.getChemicalTanks(); s++) {
                     if (gasHandlerStore.getChemicalInTank(s).isEmpty()) {
@@ -60,14 +60,14 @@ public class GasExtractGoal extends GoToPosGoal<StarbyGasBehavior>{
                 if (maxRoom <= Configs.STARBALLOON_THRESHOLD.get()) return true;
                 int takeAmount = (int) Math.min(toExtract.getAmount(), Math.min(maxRoom, behavior.getRatio()));
                 starbuncle.level().playSound(null, targetPos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.NEUTRAL, 0.2f, 1.3f);
-                ChemicalStack extracted = new ChemicalStack(toExtract.getChemicalHolder(), takeAmount);
+                ChemicalStack extracted = toExtract.copyWithAmount(takeAmount);
                 behavior.setGasStack(gasHandlerExtract.extractChemical(extracted, Action.EXECUTE));
                 starbuncle.addGoalDebug(this, new DebugEvent("SetHeld", "Taking " + takeAmount + "x " + extracted.getChemicalHolder().getRegisteredName() + " from " + targetPos.toString()));
 
-            }else {
+            } else {
                 starbuncle.addGoalDebug(this, new DebugEvent("NoHandler", "No gas handler at " + targetPos.toString()));
             }
-        }else {
+        } else {
             starbuncle.addGoalDebug(this, new DebugEvent("NoHandler", "No gas handler at " + targetPos.toString()));
         }
         return true;
