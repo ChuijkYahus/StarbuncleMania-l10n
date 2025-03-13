@@ -36,7 +36,7 @@ public class SourceCondenserTile extends AbstractTankTile implements GeoBlockEnt
     public void tick() {
         if (level != null && !level.isClientSide() && level.getGameTime() % 40 == 0) {
             if (this.tank.fill(tester, IFluidHandler.FluidAction.SIMULATE) == 1000 && !disabled) {
-                if (SourceUtil.takeSourceWithParticles(getBlockPos(), level, 6, Configs.SOURCE_TO_FLUID.get()) != null) {
+                if (SourceUtil.takeSourceMultipleWithParticles(getBlockPos(), level, 6, Configs.SOURCE_TO_FLUID.get()) != null) {
                     this.tank.fill(tester, IFluidHandler.FluidAction.EXECUTE);
                 }
             }

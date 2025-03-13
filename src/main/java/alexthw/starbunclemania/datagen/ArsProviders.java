@@ -14,6 +14,7 @@ import com.hollingsworth.arsnouveau.common.datagen.*;
 import com.hollingsworth.arsnouveau.common.datagen.patchouli.*;
 import com.hollingsworth.arsnouveau.setup.registry.ItemsRegistry;
 import com.mojang.serialization.JsonOps;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -26,6 +27,7 @@ import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 
 import static alexthw.starbunclemania.registry.ModRegistry.*;
 import static com.hollingsworth.arsnouveau.setup.registry.RegistryHelper.getRegistryName;
@@ -140,8 +142,8 @@ public class ArsProviders {
 
     public static class StarPatchouliProvider extends PatchouliProvider {
 
-        public StarPatchouliProvider(DataGenerator generatorIn) {
-            super(generatorIn);
+        public StarPatchouliProvider(DataGenerator generatorIn, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+            super(generatorIn, lookupProvider);
         }
 
         @Override

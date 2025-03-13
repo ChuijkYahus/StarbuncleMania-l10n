@@ -7,7 +7,6 @@ import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,10 +30,6 @@ public class Configs {
     public static ModConfigSpec.IntValue STARBALLOON_THRESHOLD;
     public static ModConfigSpec.IntValue STARBATTERY_RATIO;
     public static ModConfigSpec.IntValue STARBATTERY_THRESHOLD;
-
-
-    public static ModConfigSpec.LongValue GAS_SOURCE_BURN_VALUE;
-
 
     static {
 
@@ -86,7 +81,7 @@ public class Configs {
         public Server(ModConfigSpec.Builder builder) {
             builder.push("General Configs");
             FLUID_TO_SOURCE_CONFIG = builder.comment("Value of milli-bucket of fluid converted in source by the sourcelink", "Example entry: \"minecraft:lava=1.6\"")
-                    .defineList("fluid_to_source", writeConfig(getDefaultLiquidSource()), Configs::validateMap);
+                    .defineList("fluid_to_source", writeConfig(getDefaultLiquidSource()), () -> "namespace:fluid=value", Configs::validateMap);
             SOURCE_TO_FLUID = builder.comment("Source cost to make a bucket of liquid source.").defineInRange("source_condense_cost", 1000, 1, Integer.MAX_VALUE);
 
             STARBUCKET_RATIO = builder.comment("Transfer rate of the fluid starbuncles").defineInRange("starbucket_ratio", 1000, 1, Integer.MAX_VALUE);
@@ -96,10 +91,6 @@ public class Configs {
             STARBATTERY_THRESHOLD = builder.comment("Threshold rate of the energy starbuncles, lower this if you need them to check and fill more often.").defineInRange("starbattery_threshold", 1000, 1, Integer.MAX_VALUE);
             STARBALLOON_THRESHOLD = builder.comment("Threshold rate of the gas starbuncles, lower this if you need them to check and fill more often.").defineInRange("starballoon_threshold", 250, 1, Integer.MAX_VALUE);
 
-            builder.pop();
-
-            builder.push("Mekanism Compat");
-            GAS_SOURCE_BURN_VALUE = builder.comment("How much energy is produced per mB of Gaseous Source").defineInRange("source_gas_energy_density",200L, 0L, Long.MAX_VALUE);
             builder.pop();
         }
     }

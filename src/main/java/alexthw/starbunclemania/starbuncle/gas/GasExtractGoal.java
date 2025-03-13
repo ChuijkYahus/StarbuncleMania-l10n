@@ -39,9 +39,9 @@ public class GasExtractGoal extends GoToPosGoal<StarbyGasBehavior>{
         int tankIndexE = 0;
         if (gasHandlerExtract != null){
             ChemicalStack toExtract = gasHandlerExtract.getChemicalInTank(tankIndexE);
-            BlockPos pos = behavior.getTankForStorage(new ChemicalStack(toExtract.getChemical(), behavior.getRatio()));
+            BlockPos pos = behavior.getTankForStorage(new ChemicalStack(toExtract.getChemicalHolder(), behavior.getRatio()));
             if (pos == null) {
-                starbuncle.addGoalDebug(this, new DebugEvent("NoRoom", "No Room for " + toExtract.getTypeRegistryName() + " from " + targetPos.toString()));
+                starbuncle.addGoalDebug(this, new DebugEvent("NoRoom", "No Room for " + toExtract.getChemicalHolder().getRegisteredName() + " from " + targetPos.toString()));
                 return true;
             }
             IChemicalHandler gasHandlerStore = behavior.getHandlerFromCap(pos, behavior.TO_DIRECTION_MAP.get(pos.hashCode()));
@@ -60,9 +60,9 @@ public class GasExtractGoal extends GoToPosGoal<StarbyGasBehavior>{
                 if (maxRoom <= Configs.STARBALLOON_THRESHOLD.get()) return true;
                 int takeAmount = (int) Math.min(toExtract.getAmount(), Math.min(maxRoom, behavior.getRatio()));
                 starbuncle.level().playSound(null, targetPos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.NEUTRAL, 0.2f, 1.3f);
-                ChemicalStack extracted = new ChemicalStack(toExtract.getChemical(), takeAmount);
+                ChemicalStack extracted = new ChemicalStack(toExtract.getChemicalHolder(), takeAmount);
                 behavior.setGasStack(gasHandlerExtract.extractChemical(extracted, Action.EXECUTE));
-                starbuncle.addGoalDebug(this, new DebugEvent("SetHeld", "Taking " + takeAmount + "x " + extracted.getTypeRegistryName() + " from " + targetPos.toString()));
+                starbuncle.addGoalDebug(this, new DebugEvent("SetHeld", "Taking " + takeAmount + "x " + extracted.getChemicalHolder().getRegisteredName() + " from " + targetPos.toString()));
 
             }else {
                 starbuncle.addGoalDebug(this, new DebugEvent("NoHandler", "No gas handler at " + targetPos.toString()));
