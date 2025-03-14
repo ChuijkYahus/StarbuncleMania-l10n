@@ -5,6 +5,7 @@ import alexthw.starbunclemania.starbuncle.AuthorizedBehavior;
 import alexthw.starbunclemania.starbuncle.StarbyItemBehavior;
 import alexthw.starbunclemania.starbuncle.TakeItemGoal;
 import com.hollingsworth.arsnouveau.api.ANFakePlayer;
+import com.hollingsworth.arsnouveau.common.datagen.BlockTagProvider;
 import com.hollingsworth.arsnouveau.common.entity.Starbuncle;
 import com.hollingsworth.arsnouveau.common.entity.goal.carbuncle.GoToBedGoal;
 import com.hollingsworth.arsnouveau.common.util.PortUtil;
@@ -103,7 +104,7 @@ public class StarbyPlacerBehavior extends StarbyItemBehavior implements Authoriz
             playerEntity) {
         super.onFinishedConnectionFirst(storedPos, side, storedEntity, playerEntity);
         if (storedPos != null) {
-            if (!level.isOutsideBuildHeight(storedPos)) {
+            if (!level.isOutsideBuildHeight(storedPos) && !level.getBlockState(storedPos).is(BlockTagProvider.SUMMON_SLEEPABLE)) {
                 addToPos(storedPos);
                 syncTag();
                 PortUtil.sendMessage(playerEntity, Component.translatable("ars_nouveau.starbuncle.place"));
@@ -115,7 +116,7 @@ public class StarbyPlacerBehavior extends StarbyItemBehavior implements Authoriz
     public void onFinishedConnectionLast(@Nullable BlockPos storedPos, @Nullable Direction side, @Nullable LivingEntity storedEntity, Player playerEntity) {
         super.onFinishedConnectionLast(storedPos, side, storedEntity, playerEntity);
         if (storedPos != null) {
-            if (getItemCapFromTile(storedPos, side) != null) {
+            if (getItemCapFromTile(storedPos, side) != null && !level.getBlockState(storedPos).is(BlockTagProvider.SUMMON_SLEEPABLE)) {
                 addFromPos(storedPos);
                 syncTag();
                 PortUtil.sendMessage(playerEntity, Component.translatable("ars_nouveau.starbuncle.take"));
