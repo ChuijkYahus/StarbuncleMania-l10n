@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
@@ -29,9 +30,16 @@ public class HeadCosmeticRenderer implements ICurioRenderer {
         matrixStack.mulPose(Axis.YP.rotationDegrees(-netHeadYaw));
         // rotate on X axis based on player's head rotation
         matrixStack.mulPose(Axis.XP.rotationDegrees(-headPitch));
-        matrixStack.translate(0, (player.isCrouching() ? 1.4 : 2) - player.getEyeHeight(), 0);
+        // for base scale, (player.isCrouching() ? 1.2 : 2)
+        // for 0.5 scale, (player.isCrouching() ? 0.6 : 1.2)
+        // for 2 scale, (player.isCrouching() ? 2.4 : 3.6)
+        double heightRatio = player.getAttribute(Attributes.SCALE).getValue();
+        double stand = 1.6 * heightRatio + 0.4;
+        double y = (player.isCrouching() ? 1.2 * heightRatio : stand) - player.getEyeHeight();
+        matrixStack.translate(0, y, 0);
         Minecraft.getInstance().getItemRenderer().renderStatic(stack, HEAD, light, OverlayTexture.NO_OVERLAY, matrixStack, renderTypeBuffer, player.level(), 0);
         matrixStack.popPose();
 
     }
+
 }
