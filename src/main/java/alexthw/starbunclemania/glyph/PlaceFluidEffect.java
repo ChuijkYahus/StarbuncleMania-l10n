@@ -55,6 +55,11 @@ public class PlaceFluidEffect extends AbstractEffect {
     }
 
     @Override
+    public String getBookDescription() {
+        return "Place Fluid in world, draining from a tank in the hotbar or next to the turret";
+    }
+
+    @Override
     public void onResolveEntity(EntityHitResult rayTraceResult, Level world, @NotNull LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
         onResolveBlock(new BlockHitResult(rayTraceResult.getLocation(), Direction.UP, rayTraceResult.getEntity().getOnPos(), true), world, shooter, spellStats, spellContext, resolver);
     }

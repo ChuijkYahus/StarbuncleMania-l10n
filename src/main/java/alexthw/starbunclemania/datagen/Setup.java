@@ -18,7 +18,7 @@ public class Setup {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
-
+        gen.addProvider(event.includeClient(), new StarbLangProvider(gen.getPackOutput(), StarbuncleMania.MODID, "en_us"));
         gen.addProvider(event.includeClient(), new StarItemModelProvider(gen, event.getExistingFileHelper()));
         gen.addProvider(event.includeServer(), new StarBlockTagsProvider(gen, event.getLookupProvider(), event.getExistingFileHelper()));
         gen.addProvider(event.includeServer(), new StarItemTagsProvider(gen.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper()));

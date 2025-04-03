@@ -10,6 +10,7 @@ import com.hollingsworth.arsnouveau.common.block.tile.RuneTile;
 import com.hollingsworth.arsnouveau.common.items.curios.ShapersFocus;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentAOE;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentPierce;
+import com.hollingsworth.arsnouveau.common.spell.augment.AugmentSensitive;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -51,6 +52,11 @@ public class PickupFluidEffect extends AbstractEffect {
 
     public PickupFluidEffect() {
         super(prefix("glyph_pickup_fluid"), "Pickup Fluid");
+    }
+
+    @Override
+    public String getBookDescription() {
+        return "Pickups Fluids from world and fill a tank in the hotbar or next to the turret";
     }
 
     @Override
@@ -183,5 +189,6 @@ public class PickupFluidEffect extends AbstractEffect {
     public void addAugmentDescriptions(Map<AbstractAugment, String> map) {
         super.addAugmentDescriptions(map);
         addBlockAoeAugmentDescriptions(map);
+        map.put(AugmentSensitive.INSTANCE, "Targets the block hit directly instead of the relative position.");
     }
 }
