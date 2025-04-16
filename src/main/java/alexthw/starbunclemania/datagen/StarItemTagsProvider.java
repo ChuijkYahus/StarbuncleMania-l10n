@@ -26,6 +26,7 @@ public class StarItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
                 ModRegistry.SEA_BUNNY.get(),
                 ModRegistry.STARBY_EARS.get(),
                 ModRegistry.ALAK_HAT.get(),
+                ModRegistry.CHEF_HAT.get(),
                 ModRegistry.DRYGMY_HORNS.get(),
                 ModRegistry.WHIRLI_PROP.get()
         );

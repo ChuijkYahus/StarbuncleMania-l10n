@@ -8,6 +8,7 @@ import alexthw.starbunclemania.starbuncle.fluid.StarbyFluidBehavior;
 import alexthw.starbunclemania.starbuncle.gas.StarbyGasBehavior;
 import alexthw.starbunclemania.starbuncle.heal.StarbyHealerBehavior;
 import alexthw.starbunclemania.starbuncle.item.AdvancedItemTransportBehavior;
+import alexthw.starbunclemania.starbuncle.item.RRobinItemTransport;
 import alexthw.starbunclemania.starbuncle.miner.StarbyMinerBehavior;
 import alexthw.starbunclemania.starbuncle.placer.StarbyPlacerBehavior;
 import alexthw.starbunclemania.starbuncle.sword.StarbyFighterBehavior;
@@ -42,6 +43,7 @@ public class ArsNouveauRegistry {
         register(PickupFluidEffect.INSTANCE);
 
         BehaviorRegistry.register(AdvancedItemTransportBehavior.TRANSPORT_ID, (entity, tag) -> new AdvancedItemTransportBehavior((Starbuncle) entity, tag));
+        BehaviorRegistry.register(RRobinItemTransport.TRANSPORT_ID, (entity, tag) -> new RRobinItemTransport((Starbuncle) entity, tag));
         BehaviorRegistry.register(StarbyEnergyBehavior.TRANSPORT_ID, (entity, tag) -> new StarbyEnergyBehavior((Starbuncle) entity, tag));
         BehaviorRegistry.register(StarbyFluidBehavior.TRANSPORT_ID, (entity, tag) -> new StarbyFluidBehavior((Starbuncle) entity, tag));
         if (ModList.get().isLoaded("mekanism"))

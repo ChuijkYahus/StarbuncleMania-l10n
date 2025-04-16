@@ -5,10 +5,7 @@ import alexthw.starbunclemania.client.FluidSourceLinkRenderer;
 import alexthw.starbunclemania.client.SourceCondenserRenderer;
 import alexthw.starbunclemania.common.StarbyMountEntity;
 import alexthw.starbunclemania.common.block.fluids.*;
-import alexthw.starbunclemania.common.block.wixie_stations.SmeltingWixieCauldron;
-import alexthw.starbunclemania.common.block.wixie_stations.SmeltingWixieCauldronTile;
-import alexthw.starbunclemania.common.block.wixie_stations.StonecutterWixieCauldron;
-import alexthw.starbunclemania.common.block.wixie_stations.StonecutterWixieCauldronTile;
+import alexthw.starbunclemania.common.block.wixie_stations.*;
 import alexthw.starbunclemania.common.data.DirectionData;
 import alexthw.starbunclemania.common.data.FluidScrollData;
 import alexthw.starbunclemania.common.item.DirectionScroll;
@@ -132,6 +129,7 @@ public class ModRegistry {
     public static final DeferredHolder<Item, Item>
             STARHAT,
             PROFHAT,
+            ROBINHAT,
             STARBATTERY,
             STARBUCKET,
             STARBALLON,
@@ -141,6 +139,8 @@ public class ModRegistry {
             STARSADDLE,
             STARMINE,
             STARBUILD;
+
+    public static final DeferredHolder<Item, Item> CHEF_HAT;
 
     public static final DeferredHolder<Item, ? extends PlayerCurioCosmetic>
             STARBY_EARS,
@@ -161,6 +161,10 @@ public class ModRegistry {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SmeltingWixieCauldronTile>> SMELTING_WIXIE_CAULDRON_TILE;
     public static final DeferredHolder<Block, Block> STONEWORK_WIXIE_CAULDRON;
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<StonecutterWixieCauldronTile>> STONECUTTER_WIXIE_CAULDRON_TILE;
+    public static final DeferredHolder<Block, Block> MIXER_WIXIE_CAULDRON;
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MixerWixieCauldronTile>> MIXER_WIXIE_CAULDRON_TILE;
+
+
 
     public static final DeferredHolder<EntityType<?>, EntityType<StarbyMountEntity>> STARBY_MOUNT;
 
@@ -180,6 +184,7 @@ public class ModRegistry {
 
         STARHAT = ITEMS.register("star_hat", () -> new ExampleCosmetic(basicItemProperties(), "starbunclemania.simple_cosmetic.tooltip"));
         PROFHAT = ITEMS.register("wyrm_degree", () -> new ProfHat(basicItemProperties(), "starbunclemania.degree_hat.tooltip"));
+        ROBINHAT = ITEMS.register("robin_mask", () -> new RRobinHat(basicItemProperties(), "starbunclemania.robin_mask.tooltip"));
         STARBATTERY = ITEMS.register("star_battery", () -> new StarbAABattery(basicItemProperties(), "starbunclemania.battery.tooltip"));
         STARBUCKET = ITEMS.register("star_bucket", () -> new StarBucket(basicItemProperties(), "starbunclemania.bucket.tooltip"));
         STARBALLON = ITEMS.register("star_balloon", () -> new StarBalloon(basicItemProperties(), "starbunclemania.balloon.tooltip"));
@@ -188,6 +193,10 @@ public class ModRegistry {
         STARWAND = ITEMS.register("star_wand", () -> new StarWand(new Item.Properties()));
         STARMINE = ITEMS.register("star_miner", () -> new MinerHat(basicItemProperties(), "starbunclemania.miner_hat.tooltip"));
         STARBUILD = ITEMS.register("star_build", () -> new ArchitectHat(basicItemProperties(), "starbunclemania.builder_hat.tooltip"));
+
+        // Cosmetic
+
+        CHEF_HAT = ITEMS.register("chef_hat", () -> new ChefHat(basicItemProperties()).withTooltip("starbunclemania.chef_hat.tooltip"));
 
         // Scrolls
 
@@ -240,6 +249,10 @@ public class ModRegistry {
         STONEWORK_WIXIE_CAULDRON = BLOCKS.register("stonecutting_wixie_cauldron", StonecutterWixieCauldron::new);
         STONECUTTER_WIXIE_CAULDRON_TILE = BLOCK_ENTITIES.register("stonecutting_wixie_cauldron_tile", () -> BlockEntityType.Builder.of(StonecutterWixieCauldronTile::new, STONEWORK_WIXIE_CAULDRON.get()).build(null));
         ITEMS.register("stonecutting_wixie_cauldron", () -> new BlockItem(STONEWORK_WIXIE_CAULDRON.get(), basicItemProperties()));
+
+        MIXER_WIXIE_CAULDRON = BLOCKS.register("mixer_wixie_cauldron", MixerWixieCauldron::new);
+        MIXER_WIXIE_CAULDRON_TILE = BLOCK_ENTITIES.register("mixer_wixie_cauldron_tile", () -> BlockEntityType.Builder.of(MixerWixieCauldronTile::new, MIXER_WIXIE_CAULDRON.get()).build(null));
+        ITEMS.register("mixer_wixie_cauldron", () -> new BlockItem(MIXER_WIXIE_CAULDRON.get(), basicItemProperties()));
     }
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SBM_TAB = TABS.register("general", () -> CreativeModeTab.builder()

@@ -10,6 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public abstract class AbstractCosmeticItem extends Item implements ICosmeticItem
     }
 
     @Override
-    public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity interactionTarget, InteractionHand usedHand) {
+    public @NotNull InteractionResult interactLivingEntity(@NotNull ItemStack stack, @NotNull Player player, @NotNull LivingEntity interactionTarget, @NotNull InteractionHand usedHand) {
         if (interactionTarget instanceof IDecoratable deco && canWear(interactionTarget)) {
             deco.setCosmeticItem(stack.split(1));
             if (!player.isShiftKeyDown())
@@ -38,7 +39,7 @@ public abstract class AbstractCosmeticItem extends Item implements ICosmeticItem
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         if (!tooltipText.isEmpty()){
             tooltipComponents.add(Component.translatable(tooltipText));

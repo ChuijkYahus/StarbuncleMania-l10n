@@ -25,6 +25,7 @@ public class PlayerCurioCosmetic extends ArsNouveauCurio {
         CuriosRendererRegistry.register(ModRegistry.STARBY_EARS.get(), HeadCosmeticRenderer::new);
         CuriosRendererRegistry.register(ModRegistry.ALAK_HAT.get(), HeadCosmeticRenderer::new);
         CuriosRendererRegistry.register(ModRegistry.SEA_BUNNY.get(), HeadCosmeticRenderer::new);
+        CuriosRendererRegistry.register(ModRegistry.CHEF_HAT.get(), HeadCosmeticRenderer::new);
         CuriosRendererRegistry.register(ModRegistry.DRYGMY_HORNS.get(), HeadCosmeticRenderer::new);
         CuriosRendererRegistry.register(ModRegistry.WHIRLI_PROP.get(), PropellerRenderer::new);
 

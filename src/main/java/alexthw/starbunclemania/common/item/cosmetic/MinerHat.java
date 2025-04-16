@@ -15,6 +15,9 @@ import net.minecraft.world.phys.Vec3;
 
 public class MinerHat extends AbstractCosmeticItem {
 
+    public static final Vec3 trans = new Vec3(0, 0.25, -0.125);
+    public static final Vec3 scaling = new Vec3(1.0, 1.0, 1.0);
+
     public MinerHat(Properties pProperties, String s) {
         super(pProperties,s);
     }
@@ -37,12 +40,12 @@ public class MinerHat extends AbstractCosmeticItem {
 
     @Override
     public Vec3 getTranslations() {
-        return new Vec3(0, 0.25, -0.125);
+        return trans;
     }
 
     @Override
     public Vec3 getScaling() {
-        return new Vec3(1.0, 1.0, 1.0);
+        return scaling;
     }
 
 }

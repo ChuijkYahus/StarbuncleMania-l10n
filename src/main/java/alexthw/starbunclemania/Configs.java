@@ -24,6 +24,7 @@ public class Configs {
     private static ModConfigSpec.ConfigValue<List<? extends String>> FLUID_TO_SOURCE_CONFIG;
     public static ModConfigSpec.IntValue SOURCE_TO_FLUID;
 
+    public static ModConfigSpec.BooleanValue MOB_JAR_RENDER;
     public static ModConfigSpec.IntValue STARBUCKET_RATIO;
     public static ModConfigSpec.IntValue STARBUCKET_THRESHOLD;
     public static ModConfigSpec.IntValue STARBALLOON_RATIO;
@@ -73,6 +74,9 @@ public class Configs {
 
         public Common(ModConfigSpec.Builder builder) {
 
+            builder.push("General Configs");
+            MOB_JAR_RENDER = builder.comment("Enable the mob jar fluid's rendering").define("mob_jar_render", true);
+            builder.pop();
         }
     }
 

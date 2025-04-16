@@ -32,12 +32,14 @@ public class StarbLangProvider extends LanguageProvider {
         add("block.starbunclemania.cutting_wixie_cauldron", "Wixie's Cutting Board");
         add("block.starbunclemania.cooking_pot_wixie_cauldron", "Wixie's Cooking Pot");
         add("block.starbunclemania.crucible_wixie_cauldron", "Wixie's Crucible");
+        add("block.starbunclemania.mixer_wixie_cauldron", "Wixie's Mixer");
         add("block.starbunclemania.source_fluid_block", "Liquified Source");
         add("item.starbunclemania.direction_scroll", "Direction Scroll");
         add("item.starbunclemania.fluid_scroll_allow", "Fluid Scroll: Allow");
         add("item.starbunclemania.fluid_scroll_deny", "Fluid Scroll: Deny");
         add("item.starbunclemania.star_hat", "Blues Hat");
         add("item.starbunclemania.wyrm_degree", "Wyrm Degree");
+        add("item.starbunclemania.robin_mask", "Square Robin Mask");
         add("item.starbunclemania.star_battery", "StarbAttery");
         add("item.starbunclemania.star_bucket", "Starbucket");
         add("item.starbunclemania.star_balloon", "Starballoon");
@@ -48,6 +50,7 @@ public class StarbLangProvider extends LanguageProvider {
         add("item.starbunclemania.star_miner", "Starminer");
         add("item.starbunclemania.star_build", "Starbuilder");
         add("item.starbunclemania.starby_ears", "Starby Ears");
+        add("item.starbunclemania.chef_hat", "Chef Hat");
         add("starbunclemania.starby_ears.tooltip", "Cosmetic curio for Players");
         add("item.starbunclemania.drygmy_horns", "Drygmy Horns");
         add("starbunclemania.drygmy_horns.tooltip", "Cosmetic curio for Players");
@@ -57,6 +60,7 @@ public class StarbLangProvider extends LanguageProvider {
         add("starbunclemania.alak_hat.tooltip", "Cosmetic curio for Players");
         add("item.starbunclemania.sea_bunny", "Sea Bunny");
         add("starbunclemania.sea_bunny.tooltip", "Cosmetic curio for Players");
+        add("starbunclemania.chef_hat.tooltip", "Cosmetic curio for Players, Starbuncles and Wixie Familiars.");
         add("starbunclemania.player_cosmetic", "Cosmetic Accessories");
         add("starbunclemania.page.player_cosmetic", "Have you ever wanted to look a bit more like a Starbuncle? Or have a cool sandy hat, horns or even a propeller? Now you can! These accessories are purely cosmetic and can be worn by players in the Head curio slot.");
         add("item.starbunclemania.fluid_jar", "Fluid Jar");
@@ -65,6 +69,7 @@ public class StarbLangProvider extends LanguageProvider {
         add("chemical.starbunclemania.source_gas", "Gaseous Source");
         add("entity.starbunclemania.starby_mount", "Starbuncle");
         add("ars_nouveau.starbuncle.sided_item_behavior_set", "Starbuncle will now insert/extract items from specified sides");
+        add("ars_nouveau.starbuncle.robin_item_behavior_set", "Starbuncle will now round-robin items between multiple inventories");
         add("ars_nouveau.starbuncle.fluid_behavior_set", "Starbuncle will now transport fluids");
         add("ars_nouveau.starbuncle.energy_behavior_set", "Starbuncle will now transport energy");
         add("ars_nouveau.starbuncle.gas_behavior_set", "Starbuncle will now transport gasses");
@@ -97,6 +102,7 @@ public class StarbLangProvider extends LanguageProvider {
         add("ars_nouveau.starbuncle.tool", "Using %s as tool");
         add("starbunclemania.simple_cosmetic.tooltip", "Simple cosmetic for your familiars. Supported familiars: Starbuncle, Wixie, Drygmy, Bookwyrm.");
         add("starbunclemania.degree_hat.tooltip", "Cosmetic for your familiars. Supported creatures: Starbuncles, Bookwyrm (Familiar). Also allows item starbuncles to read Direction Scrolls.");
+        add("starbunclemania.robin_mask.tooltip", "Tweaks the starbuncle's item transport to round-robin items between inventories, also stops pickup. Can be used as a simple cosmetic by sneaking while using it, without changing its current behavior.");
         add("starbunclemania.bucket.tooltip", "Changes a starbuncle's job to transport fluids around. Can be used as a simple cosmetic by sneaking while using it, without changing its current behavior.");
         add("starbunclemania.balloon.tooltip", "Changes a starbuncle's job to transport Mekanism chemical around. Can be dyed and used as a simple cosmetic by sneaking while using it, without changing its current behavior. Supported familiars: Starbuncle, Drygmy, Wixie.");
         add("starbunclemania.battery.tooltip", "Changes a starbuncle's job to transport FE energy around. Can be used as a simple cosmetic by sneaking while using it, without changing its current behavior.");

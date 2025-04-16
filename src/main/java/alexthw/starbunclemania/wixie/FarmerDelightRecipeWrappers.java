@@ -15,7 +15,6 @@ import java.util.Map;
 
 public class FarmerDelightRecipeWrappers {
 
-
     public static class CuttingRecipeWrapper extends MultiRecipeWrapper {
         public static Map<Item, MultiRecipeWrapper> RECIPE_CACHE = new HashMap<>();
 

@@ -48,13 +48,13 @@ public class FarmerPotWixieCauldron extends WixieCauldron {
     public void animateTick(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull RandomSource random) {
         BlockEntity tileEntity = level.getBlockEntity(pos);
         if (tileEntity instanceof WixieCauldronTile cookingPotEntity) {
-            if (!cookingPotEntity.isCraftingDone()) {
+            if (!cookingPotEntity.isCraftingDone() && cookingPotEntity.hasSource) {
                 SoundEvent boilSound = ModSounds.BLOCK_COOKING_POT_BOIL.get();
                 double x = (double) pos.getX() + 0.5;
                 double y = pos.getY();
                 double z = (double) pos.getZ() + 0.5;
                 if (random.nextInt(10) == 0) {
-                    level.playLocalSound(x, y, z, boilSound, SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.2F + 0.9F, false);
+                    level.playLocalSound(x, y, z, boilSound, SoundSource.BLOCKS, 0.25F, random.nextFloat() * 0.2F + 0.9F, false);
                 }
             }
         }

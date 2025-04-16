@@ -42,7 +42,8 @@ public class ClientHandler {
     @SubscribeEvent
     public static void init(final FMLClientSetupEvent evt) {
 
-        BlockEntityRenderers.register(ModRegistry.FLUID_JAR_TILE.get(), context -> new JarRenderer());
+        BlockEntityRenderers.register(ModRegistry.FLUID_JAR_TILE.get(), JarRenderer::new);
+        BlockEntityRenderers.register(ModRegistry.MIXER_WIXIE_CAULDRON_TILE.get(), WixieMixerRenderer::new);
         evt.enqueueWork(() -> ItemProperties.register(ModRegistry.DIRECTION_SCROLL.get(), ResourceLocation.fromNamespaceAndPath(StarbuncleMania.MODID, "side"), (stack, level, entity, seed) -> {
             var tag = stack.get(ModRegistry.DIRECTION);
             return tag != null ? tag.direction().ordinal() : -1;

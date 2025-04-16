@@ -1,5 +1,6 @@
 package alexthw.starbunclemania.mixin;
 
+import alexthw.starbunclemania.common.block.fluids.LiquidJarBlock;
 import alexthw.starbunclemania.registry.EidolonCompat;
 import alexthw.starbunclemania.registry.FarmerDelightCompat;
 import alexthw.starbunclemania.registry.ModRegistry;
@@ -27,20 +28,28 @@ public class WixieCharmMixin {
     public void useOnBlock(UseOnContext context, @NotNull Level world, BlockPos pos, CallbackInfoReturnable<InteractionResult> cir) {
         BlockState blockState = world.getBlockState(pos);
         if (!(context.getPlayer() instanceof ServerPlayer player)) return;
-        if (blockState.getBlock() instanceof FurnaceBlock) {
-            world.setBlockAndUpdate(pos, ModRegistry.SMELTING_WIXIE_CAULDRON.get().defaultBlockState().setValue(FurnaceBlock.FACING, blockState.getValue(FurnaceBlock.FACING)));
-            cir.setReturnValue(InteractionResult.SUCCESS);
-            ModRegistry.WIXIE_1.get().trigger(player);
-        } else if (blockState.getBlock() instanceof StonecutterBlock) {
-            world.setBlockAndUpdate(pos, ModRegistry.STONEWORK_WIXIE_CAULDRON.get().defaultBlockState().setValue(StonecutterBlock.FACING, blockState.getValue(StonecutterBlock.FACING)));
-            ModRegistry.WIXIE_2.get().trigger(player);
-            cir.setReturnValue(InteractionResult.SUCCESS);
-        } else {
-            if (ModList.get().isLoaded("farmersdelight")) {
-                FarmerDelightCompat.checkWixieBlock(blockState, world, pos, player, cir);
+        switch (blockState.getBlock()) {
+            case FurnaceBlock furnaceBlock -> {
+                world.setBlockAndUpdate(pos, ModRegistry.SMELTING_WIXIE_CAULDRON.get().defaultBlockState().setValue(FurnaceBlock.FACING, blockState.getValue(FurnaceBlock.FACING)));
+                cir.setReturnValue(InteractionResult.SUCCESS);
+                ModRegistry.WIXIE_1.get().trigger(player);
             }
-            if (ModList.get().isLoaded("eidolon")) {
-                EidolonCompat.checkWixieBlock(blockState, world, pos, player, cir);
+            case StonecutterBlock stonecutterBlock -> {
+                world.setBlockAndUpdate(pos, ModRegistry.STONEWORK_WIXIE_CAULDRON.get().defaultBlockState().setValue(StonecutterBlock.FACING, blockState.getValue(StonecutterBlock.FACING)));
+                ModRegistry.WIXIE_2.get().trigger(player);
+                cir.setReturnValue(InteractionResult.SUCCESS);
+            }
+            case LiquidJarBlock liquidJarBlock -> {
+                world.setBlockAndUpdate(pos, ModRegistry.MIXER_WIXIE_CAULDRON.get().defaultBlockState());
+                cir.setReturnValue(InteractionResult.SUCCESS);
+            }
+            default -> {
+                if (ModList.get().isLoaded("farmersdelight")) {
+                    FarmerDelightCompat.checkWixieBlock(blockState, world, pos, player, cir);
+                }
+                if (ModList.get().isLoaded("eidolon")) {
+                    EidolonCompat.checkWixieBlock(blockState, world, pos, player, cir);
+                }
             }
         }
     }

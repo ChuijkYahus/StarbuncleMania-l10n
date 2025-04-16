@@ -44,14 +44,19 @@ public class FarmerDelightCompat {
     }
 
     public static void checkWixieBlock(BlockState blockState, Level world, BlockPos pos, ServerPlayer player, CallbackInfoReturnable<InteractionResult> cir) {
-        if (blockState.getBlock() instanceof CuttingBoardBlock) {
-            world.setBlockAndUpdate(pos, CUTTING_WIXIE_CAULDRON.get().defaultBlockState().setValue(CuttingBoardBlock.FACING, blockState.getValue(CuttingBoardBlock.FACING)));
-            ModRegistry.WIXIE_2.get().trigger(player);
-            cir.setReturnValue(InteractionResult.SUCCESS);
-        } else if (blockState.getBlock() instanceof CookingPotBlock) {
-            world.setBlockAndUpdate(pos, COOKING_POT_WIXIE_CAULDRON.get().defaultBlockState().setValue(CookingPotBlock.FACING, blockState.getValue(CookingPotBlock.FACING)).setValue(CookingPotBlock.SUPPORT, blockState.getValue(CookingPotBlock.SUPPORT)));
-            ModRegistry.WIXIE_1.get().trigger(player);
-            cir.setReturnValue(InteractionResult.SUCCESS);
+        switch (blockState.getBlock()) {
+            case CuttingBoardBlock cuttingBoardBlock -> {
+                world.setBlockAndUpdate(pos, CUTTING_WIXIE_CAULDRON.get().defaultBlockState().setValue(CuttingBoardBlock.FACING, blockState.getValue(CuttingBoardBlock.FACING)));
+                ModRegistry.WIXIE_2.get().trigger(player);
+                cir.setReturnValue(InteractionResult.SUCCESS);
+            }
+            case CookingPotBlock cookingPotBlock -> {
+                world.setBlockAndUpdate(pos, COOKING_POT_WIXIE_CAULDRON.get().defaultBlockState().setValue(CookingPotBlock.FACING, blockState.getValue(CookingPotBlock.FACING)).setValue(CookingPotBlock.SUPPORT, blockState.getValue(CookingPotBlock.SUPPORT)));
+                ModRegistry.WIXIE_1.get().trigger(player);
+                cir.setReturnValue(InteractionResult.SUCCESS);
+            }
+            default -> {
+            }
         }
     }
 
