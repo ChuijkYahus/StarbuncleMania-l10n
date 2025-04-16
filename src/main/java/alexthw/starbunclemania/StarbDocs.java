@@ -47,7 +47,9 @@ public class StarbDocs {
         addPage(new DocEntryBuilder(StarbuncleMania.MODID, CRAFTING, "starbunclemania.page.wixie_jobs")
                 .withIcon(ItemsRegistry.WIXIE_CHARM)
                 .withTextPage("starbunclemania.page.wixie_cook")
-                .withTextPage("starbunclemania.page.wixie_cut"));
+                .withTextPage("starbunclemania.page.wixie_cut")
+                .withTextPage("starbunclemania.page.wixie_mixer")
+        );
 
         addPage(new DocEntryBuilder(DocumentationRegistry.ITEMS, STARBY_EARS.get()).withName("starbunclemania.player_cosmetic")
                 .withTextPage("starbunclemania.page.player_cosmetic")

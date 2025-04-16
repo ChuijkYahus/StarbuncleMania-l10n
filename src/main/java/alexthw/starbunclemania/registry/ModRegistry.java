@@ -170,6 +170,7 @@ public class ModRegistry {
 
     public static final DeferredHolder<CriterionTrigger<?>, PlayerTrigger> WIXIE_1 = TRIGGERS.register("wixie_cook", () -> new PlayerTrigger());
     public static final DeferredHolder<CriterionTrigger<?>, PlayerTrigger> WIXIE_2 = TRIGGERS.register("wixie_stone", () -> new PlayerTrigger());
+    public static final DeferredHolder<CriterionTrigger<?>, PlayerTrigger> WIXIE_3 = TRIGGERS.register("wixie_mix", () -> new PlayerTrigger());
 
     static {
 

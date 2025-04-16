@@ -125,6 +125,7 @@ public class StarbLangProvider extends LanguageProvider {
         add("starbunclemania.page.wixie_jobs", "Extra jobs for the Wixie");
         add("starbunclemania.page.wixie_cook", "The Wixie can now cook! Place a Wixie on a furnace to allow it to smelt and smoke items, also compatible with a cooking pot [Farmers Delight] and crucibles [EidolonRepraised] to automate them.");
         add("starbunclemania.page.wixie_cut", "Place a Wixie on a stonecutter or on a cutting board to have it use their cutting recipes for craftings.");
+        add("starbunclemania.page.wixie_mixer", "Place a Wixie on a fluid jar to convert it to a different type of cauldron. The Mixer has two internal tanks, for water and milk, to avoid using buckets in recipes. Only works for crafting table recipes, will always consume only one unit of the fluid needed.");
         add("starbunclemania.adv.title.wyrm_degree", "It's also thanks to my two degrees...");
         add("starbunclemania.adv.desc.wyrm_degree", "Acquire a Wyrm Degree ");
         add("starbunclemania.adv.title.star_battery", "Energy Transport");
@@ -135,6 +136,8 @@ public class StarbLangProvider extends LanguageProvider {
         add("starbunclemania.adv.desc.star_balloon", "Acquire a Starballoon");
         add("starbunclemania.adv.title.star_bin", "Trash Lover");
         add("starbunclemania.adv.desc.star_bin", "Acquire a StarBin");
+        add("starbunclemania.adv.title.robin_mask", "Fighting for Equality");
+        add("starbunclemania.adv.desc.robin_mask", "Acquire a Robin Mask for Starbuncle");
         add("starbunclemania.adv.title.fluid_jar", "What if...");
         add("starbunclemania.adv.desc.fluid_jar", "Acquire a Fluid Jar");
         add("starbunclemania.adv.title.fluid_sourcelink", "A Source Sprinkler");
@@ -145,6 +148,8 @@ public class StarbLangProvider extends LanguageProvider {
         add("starbunclemania.adv.desc.wixie_cook", "Place a Wixie on a Furnace, a Crucible or a Cooking Pot");
         add("starbunclemania.adv.title.wixie_stoneworks", "Cut it Wixie, cut it!");
         add("starbunclemania.adv.desc.wixie_stoneworks", "Place a Wixie on a Stonecutter or on a Cutting Board");
+        add("starbunclemania.adv.title.wixie_mixer", "Wixie Mixie");
+        add("starbunclemania.adv.desc.wixie_mixer", "Place a Wixie on a fluid jar to make the Wixie Mixer");
 
         for (Supplier<Glyph> supplier : GlyphRegistry.getGlyphItemMap().values()) {
             Glyph glyph = supplier.get();

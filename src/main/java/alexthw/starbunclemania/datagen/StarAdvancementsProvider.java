@@ -2,11 +2,11 @@ package alexthw.starbunclemania.datagen;
 
 import alexthw.starbunclemania.StarbuncleMania;
 import alexthw.starbunclemania.registry.ModRegistry;
-
 import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.hollingsworth.arsnouveau.common.advancement.ANCriteriaTriggers;
 import com.hollingsworth.arsnouveau.common.datagen.advancement.ANAdvancementBuilder;
 import com.hollingsworth.arsnouveau.common.datagen.advancement.ANAdvancements;
+import com.hollingsworth.arsnouveau.common.lib.LibItemNames;
 import net.minecraft.advancements.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -28,10 +28,10 @@ public class StarAdvancementsProvider extends AdvancementProvider {
 
 
     public StarAdvancementsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
-        super(output, registries, existingFileHelper, List.of(new AEAdvancements()));
+        super(output, registries, existingFileHelper, List.of(new SBMAdvancements()));
     }
 
-    public static class AEAdvancements extends ANAdvancements {
+    public static class SBMAdvancements extends ANAdvancements {
 
         static Consumer<AdvancementHolder> advancementConsumer;
 
@@ -41,7 +41,7 @@ public class StarAdvancementsProvider extends AdvancementProvider {
 
 
         @Override
-        public void generate(HolderLookup.Provider registries, @NotNull Consumer<AdvancementHolder> con, @NotNull ExistingFileHelper existingFileHelper) {
+        public void generate(HolderLookup.@NotNull Provider registries, @NotNull Consumer<AdvancementHolder> con, @NotNull ExistingFileHelper existingFileHelper) {
             advancementConsumer = con;
             AdvancementHolder starbyCharm = dummy("starby_charm");
             saveBasicItem(ModRegistry.STARBUCKET.get(), starbyCharm);
@@ -49,6 +49,9 @@ public class StarAdvancementsProvider extends AdvancementProvider {
             saveBasicItem(ModRegistry.STARBATTERY.get(), starbyCharm);
             saveBasicItem(ModRegistry.STARTRASH.get(), starbyCharm);
             saveBasicItem(ModRegistry.PROFHAT.get(), starbyCharm);
+
+            AdvancementHolder starbyShades = dummy(LibItemNames.STARBUNCLE_SHADES);
+            saveBasicItem(ModRegistry.ROBINHAT.get(), starbyShades);
 
             AdvancementHolder jar = dummy("source_jar");
             var fluidJar = saveBasicItem(ModRegistry.FLUID_JAR.get(), jar);
@@ -58,6 +61,7 @@ public class StarAdvancementsProvider extends AdvancementProvider {
             AdvancementHolder wixie = dummy("wixie_charm");
             builder("wixie_cook").display(Blocks.FURNACE, AdvancementType.TASK, false).addCriterion(ANCriteriaTriggers.createCriterion(ModRegistry.WIXIE_1)).parent(wixie).save(con);
             builder("wixie_stoneworks").display(Blocks.STONECUTTER, AdvancementType.TASK, false).addCriterion(ANCriteriaTriggers.createCriterion(ModRegistry.WIXIE_2)).parent(wixie).save(con);
+            builder("wixie_mixer").display(ModRegistry.MIXER_WIXIE_CAULDRON.get(), AdvancementType.TASK, false).addCriterion(ANCriteriaTriggers.createCriterion(ModRegistry.WIXIE_3)).parent(wixie).save(con);
 
         }
 

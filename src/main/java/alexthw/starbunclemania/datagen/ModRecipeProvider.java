@@ -62,6 +62,22 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('C', Items.BLACK_CARPET)
                 .save(consumer);
 
+        shaped(ROBINHAT)
+                .pattern(" W ")
+                .pattern("WSW")
+                .pattern(" W ")
+                .define('W', Items.GREEN_WOOL)
+                .define('S', ItemsRegistry.STARBUNCLE_SHADES)
+                .save(consumer);
+
+        shaped(CHEF_HAT)
+                .pattern(" W ")
+                .pattern("WHW")
+                .pattern(" W ")
+                .define('W', Items.WHITE_WOOL)
+                .define('H', STARHAT.get())
+                .save(consumer);
+
         //blocks
         shapedB(FLUID_JAR)
                 .define('G', Items.GLASS)

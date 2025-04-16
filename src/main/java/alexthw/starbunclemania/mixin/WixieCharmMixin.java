@@ -42,6 +42,7 @@ public class WixieCharmMixin {
             case LiquidJarBlock liquidJarBlock -> {
                 world.setBlockAndUpdate(pos, ModRegistry.MIXER_WIXIE_CAULDRON.get().defaultBlockState());
                 cir.setReturnValue(InteractionResult.SUCCESS);
+                ModRegistry.WIXIE_3.get().trigger(player);
             }
             default -> {
                 if (ModList.get().isLoaded("farmersdelight")) {
