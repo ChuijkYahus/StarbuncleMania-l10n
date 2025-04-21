@@ -27,6 +27,7 @@ public class WixieMixerRenderer implements BlockEntityRenderer<MixerWixieCauldro
     @Override
     public void render(@NotNull MixerWixieCauldronTile blockEntity, float partialTick, @NotNull PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         //render fluid
+        if (!blockEntity.converted) return;
         DualFluidTank tank = blockEntity.tank;
         for (int i = 0; i < tank.getTanks(); i++) {
             poseStack.pushPose();

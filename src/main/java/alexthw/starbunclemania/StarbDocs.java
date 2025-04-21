@@ -33,6 +33,14 @@ public class StarbDocs {
 
         var dirScroll = addBasicItem(DIRECTION_SCROLL.get(), CRAFTING);
         var prof = addBasicItem(PROFHAT.get(), CRAFTING);
+        addPage(new DocEntryBuilder(CRAFTING, "starbunclemania.page.item_transfer")
+                .withIcon(PROFHAT.get())
+                .withSortNum(100)
+                .withPage(
+                        TextEntry.create(Component.translatable("starbunclemania.page." + getRegistryName(PROFHAT.get().asItem()).getPath()), PROFHAT.get().getDescription(), PROFHAT.get()))
+                .withPage(TextEntry.create(Component.translatable("starbunclemania.page.robin_mask"), ROBINHAT.get().getDescription(), ROBINHAT.get()))
+                .withCraftingPages(PROFHAT.get(), ROBINHAT.get())).withRelations(dirScroll);
+
         var fluid = addPage(new DocEntryBuilder(CRAFTING, STARBUCKET.get())
                 .withTextPage("starbunclemania.page.star_bucket")
                 .withCraftingPages(STARBUCKET.get())
@@ -57,7 +65,10 @@ public class StarbDocs {
                 .withCraftingPages(ALAK_HAT.get()).withCraftingPages(SEA_BUNNY.get())
                 .withCraftingPages(DRYGMY_HORNS.get()).withCraftingPages(WHIRLI_PROP.get()));
 
-        addBasicItem(STARHAT.get(), FAMILIARS).withRelations(balloon, thrash, battery, fluid, prof);
+        addPage(new DocEntryBuilder(FAMILIARS, STARHAT.get().getDescriptionId())
+                .withIcon(STARHAT.get())
+                .withSortNum(100)
+                .withPage(TextEntry.create(Component.translatable("starbunclemania.page." + getRegistryName(STARHAT.get().asItem()).getPath()), STARHAT.get().getDescription(), STARHAT.get())).withCraftingPages(STARHAT.get()).withCraftingPages(CHEF_HAT.get())).withRelations(balloon, thrash, battery, fluid, prof);
     }
 
     public static DocEntry addBasicItem(ItemLike item, DocCategory category) {
