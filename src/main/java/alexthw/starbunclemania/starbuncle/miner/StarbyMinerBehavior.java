@@ -207,6 +207,7 @@ public class StarbyMinerBehavior extends StarbyItemBehavior implements Authorize
         List<ItemStack> drops = blockState.getDrops(
                 new LootParams.Builder((ServerLevel) level)
                         .withParameter(LootContextParams.ORIGIN, starbuncle.position())
+                        .withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(p))
                         .withParameter(LootContextParams.TOOL, getToolToUse())
                         .withParameter(LootContextParams.ENCHANTMENT_ACTIVE, true)
         );
