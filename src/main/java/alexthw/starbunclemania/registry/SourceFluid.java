@@ -1,5 +1,6 @@
 package alexthw.starbunclemania.registry;
 
+import alexthw.starbunclemania.StarbuncleMania;
 import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -30,8 +31,8 @@ public class SourceFluid extends FluidType {
     }
 
     public static IClientFluidTypeExtensions extension = (new IClientFluidTypeExtensions() {
-        private static final ResourceLocation STILL = ResourceLocation.fromNamespaceAndPath(ArsNouveau.MODID, "block/potion_still"),
-                FLOW = ResourceLocation.fromNamespaceAndPath(ArsNouveau.MODID, "block/potion_still"),
+        private static final ResourceLocation STILL = ResourceLocation.fromNamespaceAndPath(StarbuncleMania.MODID, "block/source_still"),
+                FLOW = ResourceLocation.fromNamespaceAndPath(StarbuncleMania.MODID, "block/source_flow"),
                 OVERLAY = ResourceLocation.fromNamespaceAndPath(ArsNouveau.MODID, "block/sourcestone"),
                 VIEW_OVERLAY = ResourceLocation.fromNamespaceAndPath(ArsNouveau.MODID, "textures/block/sourcestone.png");
 
@@ -57,7 +58,7 @@ public class SourceFluid extends FluidType {
 
         @Override
         public int getTintColor() {
-            return 0xDF9B13FB;
+            return 0xFFB855EF;
         }
 
         @Override
