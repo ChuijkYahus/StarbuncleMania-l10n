@@ -7,6 +7,7 @@ import com.hollingsworth.arsnouveau.common.entity.goal.carbuncle.StarbyTransport
 import com.hollingsworth.arsnouveau.common.items.data.StarbuncleCharmData;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -52,13 +53,13 @@ public class StarbyMountEntity extends Starbuncle implements PlayerRideableJumpi
     }
 
     @Override
-    public void die(DamageSource source) {
-        super.die(source);
+    protected void dropCustomDeathLoot(ServerLevel level, DamageSource damageSource, boolean recentlyHit) {
+        super.dropCustomDeathLoot(level, damageSource, recentlyHit);
         level().addFreshEntity(new ItemEntity(level(), getX(), getY(), getZ(), ModRegistry.STARSADDLE.get().getDefaultInstance()));
     }
 
     @Override
-    public EntityType<?> getType() {
+    public @NotNull EntityType<?> getType() {
         return ModRegistry.STARBY_MOUNT.get();
     }
 
@@ -179,7 +180,7 @@ public class StarbyMountEntity extends Starbuncle implements PlayerRideableJumpi
     }
 
     @Override
-    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+    public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
 
         if (player.level().isClientSide()) return InteractionResult.PASS;
 
