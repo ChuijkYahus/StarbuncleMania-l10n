@@ -58,7 +58,7 @@ public class SourceFluid extends FluidType {
 
         @Override
         public int getTintColor() {
-            return 0xFFB855EF;
+            return 0xFFB55AE8;
         }
 
         @Override
