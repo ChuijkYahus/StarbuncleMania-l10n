@@ -171,10 +171,12 @@ dependencies {
 
     implementation 'top.theillusivec4.curios:curios-neoforge:9.0.7+1.21'
 
-    implementation "mekanism:Mekanism:${mekanism_version}"// core
-//    implementation ("com.simibubi.create:create-1.20.1:0.5.1.f-26:all") { transitive = false }
-//    implementation ("curse.maven:eidolon-repraised-870250:5207777")
+    implementation "mekanism:Mekanism:${minecraft_version}-${mekanism_version}"// core
+
     implementation "curse.maven:farmers-delight-398521:5772720"
+    implementation "com.alexthw.eidolon_repraised:eidolon_repraised-${minecraft_version}:${eidolon_version}"
+    localRuntime "me.desht.pneumaticcraft:pneumaticcraft-repressurized:8.2.13+mc1.21.1"
+
 }
 
 jar {

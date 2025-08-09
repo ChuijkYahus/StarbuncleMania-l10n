@@ -1,5 +1,7 @@
 package alexthw.starbunclemania.registry;
 
+import alexthw.eidolon_repraised.common.block.CrucibleBlock;
+import alexthw.starbunclemania.client.WixieCrucibleRenderer;
 import alexthw.starbunclemania.common.block.wixie_stations.CrucibleWixieCauldron;
 import alexthw.starbunclemania.common.block.wixie_stations.CrucibleWixieCauldronTile;
 import net.minecraft.core.BlockPos;
@@ -30,16 +32,16 @@ public class EidolonCompat {
 
 
     public static void checkWixieBlock(BlockState blockState, Level world, BlockPos pos, ServerPlayer player, CallbackInfoReturnable<InteractionResult> cir) {
-//        if (blockState.getBlock() instanceof CrucibleBlock) {
-//            world.setBlockAndUpdate(pos, CRUCIBLE_WIXIE_CAULDRON.get().defaultBlockState());
-//            ModRegistry.WIXIE_1.trigger(player);
-//            cir.setReturnValue(InteractionResult.SUCCESS);
-//        }
+        if (blockState.getBlock() instanceof CrucibleBlock) {
+            world.setBlockAndUpdate(pos, CRUCIBLE_WIXIE_CAULDRON.get().defaultBlockState());
+            ModRegistry.WIXIE_1.get().trigger(player);
+            cir.setReturnValue(InteractionResult.SUCCESS);
+        }
     }
 
 
     public static void onRegisterRenders(EntityRenderersEvent.RegisterRenderers event) {
-//        event.registerBlockEntityRenderer(CRUCIBLE_WIXIE_CAULDRON_TILE.get(), WixieCrucibleRenderer::new);
+        event.registerBlockEntityRenderer(CRUCIBLE_WIXIE_CAULDRON_TILE.get(), WixieCrucibleRenderer::new);
     }
 
 }

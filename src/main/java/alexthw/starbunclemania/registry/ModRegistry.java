@@ -100,7 +100,7 @@ public class ModRegistry {
         if (ModList.get().isLoaded("farmersdelight")) {
             FarmerDelightCompat.register();
         }
-        if (ModList.get().isLoaded("eidolon")) {
+        if (ModList.get().isLoaded("eidolon_repraised")) {
             EidolonCompat.register();
         }
     }

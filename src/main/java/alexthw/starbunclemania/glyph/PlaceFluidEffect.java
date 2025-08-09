@@ -184,7 +184,7 @@ public class PlaceFluidEffect extends AbstractEffect {
 
     public static List<SlotReference> findItems(FilterableItemHandler itemHandler, Predicate<ItemStack> stackPredicate, InteractType type) {
         List<SlotReference> slots = new ArrayList<>();
-        for (int slot = 0; slot < Inventory.getSelectionSize(); slot++) {
+        for (int slot = 0; slot < Math.min(itemHandler.getHandler().getSlots(), Inventory.getSelectionSize()); slot++) {
             ItemStack stackInSlot = itemHandler.getHandler().getStackInSlot(slot);
             if (!stackInSlot.isEmpty() && stackPredicate.test(stackInSlot) && itemHandler.canInteractFor(stackInSlot, type).valid()) {
                 slots.add(new SlotReference(itemHandler.getHandler(), slot));
