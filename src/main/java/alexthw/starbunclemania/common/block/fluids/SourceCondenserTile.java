@@ -2,6 +2,7 @@ package alexthw.starbunclemania.common.block.fluids;
 
 import alexthw.starbunclemania.Configs;
 import alexthw.starbunclemania.registry.ModRegistry;
+import com.alexthw.sauce.common.fluid.AbstractTankTile;
 import com.hollingsworth.arsnouveau.api.util.SourceUtil;
 import com.hollingsworth.arsnouveau.common.block.ITickable;
 import net.minecraft.core.BlockPos;
@@ -17,16 +18,18 @@ import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import static com.alexthw.sauce.registry.ModRegistry.SOURCE_FLUID;
+
 public class SourceCondenserTile extends AbstractTankTile implements GeoBlockEntity, ITickable {
 
     public boolean disabled = false;
 
     public SourceCondenserTile(BlockPos pos, BlockState state) {
         super(ModRegistry.SOURCE_CONDENSER_TILE.get(), pos, state);
-        tank.setValidator((stack) -> stack.getFluid().getFluidType() == ModRegistry.SOURCE_FLUID_TYPE.get());
+        tank.setValidator((stack) -> stack.getFluid().getFluidType() == com.alexthw.sauce.registry.ModRegistry.SOURCE_FLUID_TYPE.get());
     }
 
-    public static final FluidStack tester = new FluidStack(ModRegistry.SOURCE_FLUID.get(), 1000);
+    public static final FluidStack tester = new FluidStack(SOURCE_FLUID.get(), 1000);
 
     public float getFluidPercentage() {
         return (float) super.getFluidAmount() / capacity;

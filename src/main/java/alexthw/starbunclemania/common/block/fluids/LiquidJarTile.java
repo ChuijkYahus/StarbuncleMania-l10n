@@ -1,6 +1,7 @@
 package alexthw.starbunclemania.common.block.fluids;
 
 import alexthw.starbunclemania.registry.ModRegistry;
+import com.alexthw.sauce.common.fluid.AbstractTankTile;
 import com.hollingsworth.arsnouveau.api.client.ITooltipProvider;
 import com.hollingsworth.arsnouveau.common.block.ITickable;
 import com.hollingsworth.arsnouveau.common.block.tile.PotionJarTile;

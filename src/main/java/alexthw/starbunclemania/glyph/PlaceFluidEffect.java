@@ -1,6 +1,7 @@
 package alexthw.starbunclemania.glyph;
 
 import alexthw.starbunclemania.starbuncle.fluid.StarbyFluidBehavior;
+import com.alexthw.sauce.api.WrappedExtractedItemHandler;
 import com.hollingsworth.arsnouveau.api.ANFakePlayer;
 import com.hollingsworth.arsnouveau.api.item.inv.*;
 import com.hollingsworth.arsnouveau.api.spell.*;
@@ -86,7 +87,7 @@ public class PlaceFluidEffect extends AbstractEffect {
 
         for (var tank : tanks) {
             if (tank instanceof WrappedExtractedItemHandler wrap) {
-                wrap.extractedStack.returnOrDrop(world, shooter.getOnPos());
+                wrap.extractedStack().returnOrDrop(world, shooter.getOnPos());
             }
         }
 

@@ -19,6 +19,7 @@ import java.util.concurrent.CompletableFuture;
 
 import static alexthw.starbunclemania.StarbuncleMania.prefix;
 import static alexthw.starbunclemania.registry.ModRegistry.*;
+import static com.alexthw.sauce.registry.ModRegistry.SOURCE_FLUID_BUCKET;
 
 public class ModRecipeProvider extends RecipeProvider {
     public ModRecipeProvider(DataGenerator pGenerator, CompletableFuture<HolderLookup.Provider> lookupProvider) {

@@ -4,7 +4,7 @@ import alexthw.eidolon_repraised.client.ClientRegistry;
 import alexthw.eidolon_repraised.client.particle.Particles;
 import alexthw.eidolon_repraised.registries.EidolonParticles;
 import alexthw.starbunclemania.common.block.wixie_stations.CrucibleWixieCauldronTile;
-import alexthw.starbunclemania.registry.ModRegistry;
+import com.alexthw.sauce.registry.ModRegistry;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

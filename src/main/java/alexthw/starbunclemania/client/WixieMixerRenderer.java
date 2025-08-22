@@ -2,7 +2,7 @@ package alexthw.starbunclemania.client;
 
 import alexthw.starbunclemania.common.DualFluidTank;
 import alexthw.starbunclemania.common.block.wixie_stations.MixerWixieCauldronTile;
-import alexthw.starbunclemania.registry.ModRegistry;
+import com.alexthw.sauce.registry.ModRegistry;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;

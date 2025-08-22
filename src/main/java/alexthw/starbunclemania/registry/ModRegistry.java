@@ -32,21 +32,19 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
-import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.SimpleFluidContent;
@@ -58,7 +56,7 @@ import java.util.function.Supplier;
 
 import static alexthw.starbunclemania.StarbuncleMania.prefix;
 
-@SuppressWarnings({"Convert2MethodRef", "ConstantConditions", "SpellCheckingInspection"})
+@SuppressWarnings("DataFlowIssue")
 public class ModRegistry {
 
     private static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.FLUID_TYPES, StarbuncleMania.MODID);
@@ -168,9 +166,9 @@ public class ModRegistry {
 
     public static final DeferredHolder<EntityType<?>, EntityType<StarbyMountEntity>> STARBY_MOUNT;
 
-    public static final DeferredHolder<CriterionTrigger<?>, PlayerTrigger> WIXIE_1 = TRIGGERS.register("wixie_cook", () -> new PlayerTrigger());
-    public static final DeferredHolder<CriterionTrigger<?>, PlayerTrigger> WIXIE_2 = TRIGGERS.register("wixie_stone", () -> new PlayerTrigger());
-    public static final DeferredHolder<CriterionTrigger<?>, PlayerTrigger> WIXIE_3 = TRIGGERS.register("wixie_mix", () -> new PlayerTrigger());
+    public static final DeferredHolder<CriterionTrigger<?>, PlayerTrigger> WIXIE_1 = TRIGGERS.register("wixie_cook", PlayerTrigger::new);
+    public static final DeferredHolder<CriterionTrigger<?>, PlayerTrigger> WIXIE_2 = TRIGGERS.register("wixie_stone", PlayerTrigger::new);
+    public static final DeferredHolder<CriterionTrigger<?>, PlayerTrigger> WIXIE_3 = TRIGGERS.register("wixie_mix", PlayerTrigger::new);
 
     static {
 
@@ -215,15 +213,15 @@ public class ModRegistry {
         });
 
         STARSADDLE = ITEMS.register("star_saddle", () -> new StarbySaddle(basicItemProperties()));
-        STARBY_MOUNT = addEntity("starby_mount", 2, 2, true, false, (entityCarbuncleEntityType, world) -> new StarbyMountEntity(entityCarbuncleEntityType, world), MobCategory.CREATURE);
+        STARBY_MOUNT = addEntity("starby_mount", 2, 2, true, false, StarbyMountEntity::new, MobCategory.CREATURE);
 
         // Fluids
 
-        FLUID_JAR = BLOCKS.register("fluid_jar", () -> new LiquidJarBlock());
+        FLUID_JAR = BLOCKS.register("fluid_jar", LiquidJarBlock::new);
         ITEMS.register("fluid_jar", () -> new FluidJarItem(FLUID_JAR.get(), basicItemProperties().stacksTo(1)));
         FLUID_JAR_TILE = BLOCK_ENTITIES.register("fluid_jar_tile", () -> BlockEntityType.Builder.of(LiquidJarTile::new, FLUID_JAR.get()).build(null));
 
-        SOURCE_CONDENSER = BLOCKS.register("source_condenser", () -> new SourceCondenserBlock());
+        SOURCE_CONDENSER = BLOCKS.register("source_condenser", SourceCondenserBlock::new);
         SOURCE_CONDENSER_TILE = BLOCK_ENTITIES.register("source_condenser_tile", () -> BlockEntityType.Builder.of(SourceCondenserTile::new, SOURCE_CONDENSER.get()).build(null));
         ITEMS.register("source_condenser", () -> new RendererBlockItem(SOURCE_CONDENSER.get(), basicItemProperties()) {
             @Override
@@ -232,7 +230,7 @@ public class ModRegistry {
             }
         });
 
-        FLUID_SOURCELINK = BLOCKS.register("fluid_sourcelink", () -> new FluidSourcelinkBlock());
+        FLUID_SOURCELINK = BLOCKS.register("fluid_sourcelink", FluidSourcelinkBlock::new);
         FLUID_SOURCELINK_TILE = BLOCK_ENTITIES.register("fluid_sourcelink_tile", () -> BlockEntityType.Builder.of(FluidSourcelinkTile::new, FLUID_SOURCELINK.get()).build(null));
         ITEMS.register("fluid_sourcelink", () -> new RendererBlockItem(FLUID_SOURCELINK.get(), basicItemProperties()) {
             @Override
@@ -242,7 +240,6 @@ public class ModRegistry {
         });
 
         //Wixie Cauldrons
-
         SMELTING_WIXIE_CAULDRON = BLOCKS.register("smelting_wixie_cauldron", SmeltingWixieCauldron::new);
         SMELTING_WIXIE_CAULDRON_TILE = BLOCK_ENTITIES.register("smelting_wixie_cauldron_tile", () -> BlockEntityType.Builder.of(SmeltingWixieCauldronTile::new, SMELTING_WIXIE_CAULDRON.get()).build(null));
         ITEMS.register("smelting_wixie_cauldron", () -> new BlockItem(SMELTING_WIXIE_CAULDRON.get(), basicItemProperties()));
@@ -266,27 +263,9 @@ public class ModRegistry {
             }).withTabsBefore(CreativeTabRegistry.BLOCKS.getKey().location())
             .build());
 
-    public static final DeferredHolder<FluidType, FluidType> SOURCE_FLUID_TYPE = FLUID_TYPES.register("source_fluid", SourceFluid::new);
-
-    public static final DeferredHolder<Fluid, Fluid> SOURCE_FLUID = FLUIDS.register("source_fluid", () ->
-            new BaseFlowingFluid.Source(fluidProperties()));
-    public static final DeferredHolder<Fluid, FlowingFluid> SOURCE_FLUID_FLOWING = FLUIDS.register("source_fluid_flowing", () ->
-            new BaseFlowingFluid.Flowing(fluidProperties()));
-    public static final DeferredHolder<Block, LiquidBlock> SOURCE_FLUID_BLOCK = BLOCKS.register("source_fluid_block", () ->
-            new LiquidBlock(SOURCE_FLUID_FLOWING.get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).noCollission().strength(100.0F).noLootTable()));
-    public static final DeferredHolder<Item, Item> SOURCE_FLUID_BUCKET = ITEMS.register("source_fluid_bucket", () ->
-            new BucketItem(SOURCE_FLUID.get(), basicItemProperties().craftRemainder(Items.BUCKET).stacksTo(1)));
-
     static Item.Properties basicItemProperties() {
         return new Item.Properties();
     }
-
-    private static BaseFlowingFluid.Properties fluidProperties() {
-        return new BaseFlowingFluid.Properties(SOURCE_FLUID_TYPE, SOURCE_FLUID, SOURCE_FLUID_FLOWING)
-                .block(SOURCE_FLUID_BLOCK)
-                .bucket(SOURCE_FLUID_BUCKET);
-    }
-
 
     @SuppressWarnings("SameParameterValue")
     static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> addEntity(String name, float width, float height, boolean fire, boolean noSave, EntityType.EntityFactory<T> factory, MobCategory kind) {

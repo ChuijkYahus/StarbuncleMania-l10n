@@ -1,6 +1,7 @@
 package alexthw.starbunclemania.glyph;
 
 import alexthw.starbunclemania.starbuncle.fluid.StarbyFluidBehavior;
+import com.alexthw.sauce.api.WrappedExtractedItemHandler;
 import com.hollingsworth.arsnouveau.api.ANFakePlayer;
 import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.api.spell.wrapped_caster.TileCaster;
@@ -66,7 +67,7 @@ public class PickupFluidEffect extends AbstractEffect {
             pickupCow(tanks, cow);
             for (IFluidHandler tank : tanks)
                 if (tank instanceof WrappedExtractedItemHandler wrap)
-                    wrap.extractedStack.returnOrDrop(world, shooter.getOnPos());
+                    wrap.extractedStack().returnOrDrop(world, shooter.getOnPos());
         } else {
             onResolveBlock(new BlockHitResult(rayTraceResult.getLocation(), Direction.UP, rayTraceResult.getEntity().getOnPos(), true), world, shooter, spellStats, spellContext, resolver);
         }
@@ -96,7 +97,7 @@ public class PickupFluidEffect extends AbstractEffect {
         }
         for (var tank : tanks) {
             if (tank instanceof WrappedExtractedItemHandler wrap) {
-                wrap.extractedStack.returnOrDrop(world, shooter.getOnPos());
+                wrap.extractedStack().returnOrDrop(world, shooter.getOnPos());
             }
         }
 

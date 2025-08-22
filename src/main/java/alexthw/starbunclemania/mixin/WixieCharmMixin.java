@@ -48,7 +48,7 @@ public class WixieCharmMixin {
                 if (ModList.get().isLoaded("farmersdelight")) {
                     FarmerDelightCompat.checkWixieBlock(blockState, world, pos, player, cir);
                 }
-                if (ModList.get().isLoaded("eidolon")) {
+                if (ModList.get().isLoaded("eidolon_repraised")) {
                     EidolonCompat.checkWixieBlock(blockState, world, pos, player, cir);
                 }
             }

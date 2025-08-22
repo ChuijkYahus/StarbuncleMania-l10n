@@ -1,7 +1,7 @@
 package alexthw.starbunclemania.client;
 
 import alexthw.starbunclemania.common.block.wixie_stations.FarmerPotWixieCauldronTile;
-import alexthw.starbunclemania.registry.ModRegistry;
+import com.alexthw.sauce.registry.ModRegistry;
 import com.hollingsworth.arsnouveau.client.renderer.tile.ArsGeoBlockRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

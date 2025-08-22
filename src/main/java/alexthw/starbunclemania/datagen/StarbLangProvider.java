@@ -33,7 +33,6 @@ public class StarbLangProvider extends LanguageProvider {
         add("block.starbunclemania.cooking_pot_wixie_cauldron", "Wixie's Cooking Pot");
         add("block.starbunclemania.crucible_wixie_cauldron", "Wixie's Crucible");
         add("block.starbunclemania.mixer_wixie_cauldron", "Wixie's Mixer");
-        add("block.starbunclemania.source_fluid_block", "Liquified Source");
         add("item.starbunclemania.direction_scroll", "Direction Scroll");
         add("item.starbunclemania.fluid_scroll_allow", "Fluid Scroll: Allow");
         add("item.starbunclemania.fluid_scroll_deny", "Fluid Scroll: Deny");
@@ -64,8 +63,6 @@ public class StarbLangProvider extends LanguageProvider {
         add("starbunclemania.player_cosmetic", "Cosmetic Accessories");
         add("starbunclemania.page.player_cosmetic", "Have you ever wanted to look a bit more like a Starbuncle? Or have a cool sandy hat, horns or even a propeller? Now you can! These accessories are purely cosmetic and can be worn by players in the Head curio slot.");
         add("item.starbunclemania.fluid_jar", "Fluid Jar");
-        add("item.starbunclemania.source_fluid_bucket", "Liquefied Source Bucket");
-        add("fluid_type.starbunclemania.source_fluid", "Liquefied Source");
         add("chemical.starbunclemania.source_gas", "Gaseous Source");
         add("entity.starbunclemania.starby_mount", "Starbuncle");
         add("ars_nouveau.starbuncle.sided_item_behavior_set", "Starbuncle will now insert/extract items from specified sides");
