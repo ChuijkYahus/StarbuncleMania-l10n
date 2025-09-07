@@ -21,7 +21,7 @@ public class StarbuncleMania {
     public StarbuncleMania(ModContainer modContainer, IEventBus modbus) {
         //ArsNouveau.isDebug = false;
         NeoForgeMod.enableMilkFluid();
-        Sauce.ENABLE_LIQUID_SOURCE = true;
+        Sauce.SHOW_LIQUID_SOURCE = true;
         ModRegistry.registerRegistries(modbus);
         modContainer.registerConfig(ModConfig.Type.SERVER, Configs.SERVER_SPEC);
         modContainer.registerConfig(ModConfig.Type.COMMON, Configs.COMMON_SPEC);
