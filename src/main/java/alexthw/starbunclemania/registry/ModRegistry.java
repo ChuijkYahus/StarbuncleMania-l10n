@@ -4,8 +4,19 @@ import alexthw.starbunclemania.StarbuncleMania;
 import alexthw.starbunclemania.client.FluidSourceLinkRenderer;
 import alexthw.starbunclemania.client.SourceCondenserRenderer;
 import alexthw.starbunclemania.common.StarbyMountEntity;
-import alexthw.starbunclemania.common.block.fluids.*;
-import alexthw.starbunclemania.common.block.wixie_stations.*;
+import alexthw.starbunclemania.common.block.BlockItemWTooltip;
+import alexthw.starbunclemania.common.block.fluids.FluidSourcelinkBlock;
+import alexthw.starbunclemania.common.block.fluids.FluidSourcelinkTile;
+import alexthw.starbunclemania.common.block.fluids.LiquidJarBlock;
+import alexthw.starbunclemania.common.block.fluids.LiquidJarTile;
+import alexthw.starbunclemania.common.block.fluids.SourceCondenserBlock;
+import alexthw.starbunclemania.common.block.fluids.SourceCondenserTile;
+import alexthw.starbunclemania.common.block.wixie_stations.MixerWixieCauldron;
+import alexthw.starbunclemania.common.block.wixie_stations.MixerWixieCauldronTile;
+import alexthw.starbunclemania.common.block.wixie_stations.SmeltingWixieCauldron;
+import alexthw.starbunclemania.common.block.wixie_stations.SmeltingWixieCauldronTile;
+import alexthw.starbunclemania.common.block.wixie_stations.StonecutterWixieCauldron;
+import alexthw.starbunclemania.common.block.wixie_stations.StonecutterWixieCauldronTile;
 import alexthw.starbunclemania.common.data.DirectionData;
 import alexthw.starbunclemania.common.data.FluidScrollData;
 import alexthw.starbunclemania.common.item.DirectionScroll;
@@ -32,7 +43,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -163,7 +173,6 @@ public class ModRegistry {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MixerWixieCauldronTile>> MIXER_WIXIE_CAULDRON_TILE;
 
 
-
     public static final DeferredHolder<EntityType<?>, EntityType<StarbyMountEntity>> STARBY_MOUNT;
 
     public static final DeferredHolder<CriterionTrigger<?>, PlayerTrigger> WIXIE_1 = TRIGGERS.register("wixie_cook", PlayerTrigger::new);
@@ -242,15 +251,15 @@ public class ModRegistry {
         //Wixie Cauldrons
         SMELTING_WIXIE_CAULDRON = BLOCKS.register("smelting_wixie_cauldron", SmeltingWixieCauldron::new);
         SMELTING_WIXIE_CAULDRON_TILE = BLOCK_ENTITIES.register("smelting_wixie_cauldron_tile", () -> BlockEntityType.Builder.of(SmeltingWixieCauldronTile::new, SMELTING_WIXIE_CAULDRON.get()).build(null));
-        ITEMS.register("smelting_wixie_cauldron", () -> new BlockItem(SMELTING_WIXIE_CAULDRON.get(), basicItemProperties()));
+        ITEMS.register("smelting_wixie_cauldron", () -> new BlockItemWTooltip(SMELTING_WIXIE_CAULDRON.get(), basicItemProperties(), "starbunclemania.wixie_cauldron.smelting.tooltip"));
 
         STONEWORK_WIXIE_CAULDRON = BLOCKS.register("stonecutting_wixie_cauldron", StonecutterWixieCauldron::new);
         STONECUTTER_WIXIE_CAULDRON_TILE = BLOCK_ENTITIES.register("stonecutting_wixie_cauldron_tile", () -> BlockEntityType.Builder.of(StonecutterWixieCauldronTile::new, STONEWORK_WIXIE_CAULDRON.get()).build(null));
-        ITEMS.register("stonecutting_wixie_cauldron", () -> new BlockItem(STONEWORK_WIXIE_CAULDRON.get(), basicItemProperties()));
+        ITEMS.register("stonecutting_wixie_cauldron", () -> new BlockItemWTooltip(STONEWORK_WIXIE_CAULDRON.get(), basicItemProperties(), "starbunclemania.wixie_cauldron.stonecutting.tooltip"));
 
         MIXER_WIXIE_CAULDRON = BLOCKS.register("mixer_wixie_cauldron", MixerWixieCauldron::new);
         MIXER_WIXIE_CAULDRON_TILE = BLOCK_ENTITIES.register("mixer_wixie_cauldron_tile", () -> BlockEntityType.Builder.of(MixerWixieCauldronTile::new, MIXER_WIXIE_CAULDRON.get()).build(null));
-        ITEMS.register("mixer_wixie_cauldron", () -> new BlockItem(MIXER_WIXIE_CAULDRON.get(), basicItemProperties()));
+        ITEMS.register("mixer_wixie_cauldron", () -> new BlockItemWTooltip(MIXER_WIXIE_CAULDRON.get(), basicItemProperties(), "starbunclemania.wixie_cauldron.mixer.tooltip"));
     }
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SBM_TAB = TABS.register("general", () -> CreativeModeTab.builder()

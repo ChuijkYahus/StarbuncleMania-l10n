@@ -1,6 +1,7 @@
 package alexthw.starbunclemania.registry;
 
 import alexthw.starbunclemania.client.WixiePotRenderer;
+import alexthw.starbunclemania.common.block.BlockItemWTooltip;
 import alexthw.starbunclemania.common.block.wixie_stations.CuttingWixieCauldron;
 import alexthw.starbunclemania.common.block.wixie_stations.CuttingWixieCauldronTile;
 import alexthw.starbunclemania.common.block.wixie_stations.FarmerPotWixieCauldron;
@@ -8,7 +9,6 @@ import alexthw.starbunclemania.common.block.wixie_stations.FarmerPotWixieCauldro
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -35,8 +35,8 @@ public class FarmerDelightCompat {
         COOKING_POT_WIXIE_CAULDRON = ModRegistry.BLOCKS.register("cooking_pot_wixie_cauldron", FarmerPotWixieCauldron::new);
         CUTTING_WIXIE_CAULDRON = ModRegistry.BLOCKS.register("cutting_wixie_cauldron", CuttingWixieCauldron::new);
 
-        ModRegistry.ITEMS.register("cooking_pot_wixie_cauldron", () -> new BlockItem(COOKING_POT_WIXIE_CAULDRON.get(), basicItemProperties()));
-        ModRegistry.ITEMS.register("cutting_wixie_cauldron", () -> new BlockItem(CUTTING_WIXIE_CAULDRON.get(), basicItemProperties()));
+        ModRegistry.ITEMS.register("cooking_pot_wixie_cauldron", () -> new BlockItemWTooltip(COOKING_POT_WIXIE_CAULDRON.get(), basicItemProperties(), "starbunclemania.wixie_cauldron.cooking_pot.tooltip"));
+        ModRegistry.ITEMS.register("cutting_wixie_cauldron", () -> new BlockItemWTooltip(CUTTING_WIXIE_CAULDRON.get(), basicItemProperties(), "starbunclemania.wixie_cauldron.cutting_board.tooltip"));
 
         COOKING_POT_WIXIE_CAULDRON_TILE = ModRegistry.BLOCK_ENTITIES.register("cooking_pot_wixie_cauldron_tile", () -> BlockEntityType.Builder.of(FarmerPotWixieCauldronTile::new, COOKING_POT_WIXIE_CAULDRON.get()).build(null));
         CUTTING_WIXIE_CAULDRON_TILE = ModRegistry.BLOCK_ENTITIES.register("cutting_wixie_cauldron_tile", () -> BlockEntityType.Builder.of(CuttingWixieCauldronTile::new, CUTTING_WIXIE_CAULDRON.get()).build(null));

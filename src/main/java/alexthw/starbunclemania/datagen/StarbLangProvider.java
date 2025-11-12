@@ -150,6 +150,14 @@ public class StarbLangProvider extends LanguageProvider {
         add("starbunclemania.adv.title.wixie_mixer", "Wixie Mixie");
         add("starbunclemania.adv.desc.wixie_mixer", "Place a Wixie on a fluid jar to make the Wixie Mixer");
 
+        add("starbunclemania.wixie_cauldron.smelting.tooltip", "Use a Wixie Charm on a Furnace. With this, Wixies will use smelt and smoke recipes.");
+        add("starbunclemania.wixie_cauldron.stonecutting.tooltip", "Use a Wixie Charm on a Stonecutter. With this, Wixies  will use stonecutter recipes");
+        add("starbunclemania.wixie_cauldron.cutting_board.tooltip", "Use a Wixie Charm on a Cutting Board. With this, Wixies will use cutting board recipes");
+        add("starbunclemania.wixie_cauldron.cooking_pot.tooltip", "Use a Wixie Charm on a Cooking Pot. With this, Wixies will use cooking pot recipes");
+        add("starbunclemania.wixie_cauldron.crucible.tooltip", "Use a Wixie Charm on a Crucible. With this, Wixies will use Eidolon's crucible recipes");
+        add("starbunclemania.wixie_cauldron.mixer.tooltip", "Use a Wixie Charm on a Fluid Jar. With this, Wixies will use the milk and water in the side tanks for crafting recipes instead of buckets.");
+
+
         for (Supplier<Glyph> supplier : GlyphRegistry.getGlyphItemMap().values()) {
             Glyph glyph = supplier.get();
             AbstractSpellPart spellPart = glyph.spellPart;

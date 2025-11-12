@@ -2,6 +2,7 @@ package alexthw.starbunclemania.registry;
 
 import alexthw.eidolon_repraised.common.block.CrucibleBlock;
 import alexthw.starbunclemania.client.WixieCrucibleRenderer;
+import alexthw.starbunclemania.common.block.BlockItemWTooltip;
 import alexthw.starbunclemania.common.block.wixie_stations.CrucibleWixieCauldron;
 import alexthw.starbunclemania.common.block.wixie_stations.CrucibleWixieCauldronTile;
 import net.minecraft.core.BlockPos;
@@ -15,6 +16,8 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import static alexthw.starbunclemania.registry.ModRegistry.basicItemProperties;
+
 public class EidolonCompat {
 
 
@@ -25,6 +28,7 @@ public class EidolonCompat {
     public static void register() {
 
         CRUCIBLE_WIXIE_CAULDRON = ModRegistry.BLOCKS.register("crucible_wixie_cauldron", CrucibleWixieCauldron::new);
+        ModRegistry.ITEMS.register("crucible_wixie_cauldron", () -> new BlockItemWTooltip(CRUCIBLE_WIXIE_CAULDRON.get(), basicItemProperties(), "starbunclemania.wixie_cauldron.crucible.tooltip"));
 
         CRUCIBLE_WIXIE_CAULDRON_TILE = ModRegistry.BLOCK_ENTITIES.register("crucible_wixie_cauldron_tile", () -> BlockEntityType.Builder.of(CrucibleWixieCauldronTile::new, CRUCIBLE_WIXIE_CAULDRON.get()).build(null));
 
