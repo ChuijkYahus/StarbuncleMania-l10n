@@ -7,9 +7,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.Level;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +61,8 @@ public class WaterMilkRecipeWrapper extends MultiRecipeWrapper {
     private static void removeMilkWater(Level level, boolean hasMilk, boolean hasWater, WaterMilkRecipeWrapper wrapper, Recipe<?> r, List<Ingredient> ingredients) {
         boolean needMilk = false;
         boolean needWater = false;
+        // Create a mutable copy of the ingredients list, non-null lists size can't be changed
+        ingredients = new ArrayList<>(ingredients);
         if (hasMilk) {
             needMilk = ingredients.removeIf(i -> i.test(Items.MILK_BUCKET.getDefaultInstance()));
         }
