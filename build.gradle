@@ -164,7 +164,7 @@ dependencies {
     implementation "com.alexthw.ars_elemental:ars_elemental-${minecraft_version}:${elemental_version}"
     jarJar(implementation("com.alexthw.sauce:sauce-${minecraft_version}") {
         version {
-            strictly '[0.0.7.24,)'
+            strictly '[0.0.14.44,)'
             prefer sauce_version
         }
     }) { transitive = false }
