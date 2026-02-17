@@ -18,7 +18,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
-@EventBusSubscriber(value = Dist.CLIENT, modid = StarbuncleMania.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(value = Dist.CLIENT, modid = StarbuncleMania.MODID)
 @OnlyIn(Dist.CLIENT)
 public class ClientHandler {
     @SubscribeEvent

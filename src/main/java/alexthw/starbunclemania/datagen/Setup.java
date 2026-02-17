@@ -11,7 +11,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = StarbuncleMania.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = StarbuncleMania.MODID)
 public class Setup {
 
     //use runData configuration to generate stuff, event.includeServer() for data, event.includeClient() for assets
