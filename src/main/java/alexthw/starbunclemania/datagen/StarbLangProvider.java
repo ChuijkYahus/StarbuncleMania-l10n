@@ -111,7 +111,7 @@ public class StarbLangProvider extends LanguageProvider {
         add("starbunclemania.page.fluid_scroll", "Provides a filter to Starbuncle fluid automations. Works like the item counterpart, used on a starbuncle or placed in an item frame on the tank.");
         add("starbunclemania.page.fluid_jar", "A tank made from cascading archwood logs that can hold up to 16 buckets of fluid. If used to store a potion fluid and a potion jar is placed above it, the fluid will be converted to the jar for flask/melding use.");
         add("starbunclemania.page.fluid_sourcelink", "Consumes fluids to generate source. Will automatically drain from tanks below it if compatible.");
-        add("starbunclemania.page.source_condenser", "Condense the Source from Jars into a stable fluid. Will automatically output to tanks below it if possible.");
+        add("starbunclemania.page.source_condenser", "Condense the Source from Jars into a stable fluid. Will automatically output to tanks below it if possible. A specific source can be linked to it with the Dominion Wand, pulling from all nearby jars otherwise.");
         add("starbunclemania.page.star_hat", "Accessories from StarbuncleMania aren't just for the worker starbuncles to enjoy, you can use them on your starbuncle familiar too! This one doesn't do anything, but is surely stylish. Shift-clicking a starby with an accessory will only set it as cosmetic, without setting the job.");
         add("starbunclemania.page.star_battery", "Allows Starbuncles to transport energy. Once wearing the accessory, use the Dominion wand to connect them between FE blocks.");
         add("starbunclemania.page.star_bucket", "Allows Starbuncles to transport fluids. Once wearing the accessory, use the Dominion wand to connect them between tanks.");
@@ -157,6 +157,7 @@ public class StarbLangProvider extends LanguageProvider {
         add("starbunclemania.wixie_cauldron.crucible.tooltip", "Use a Wixie Charm on a Crucible. With this, Wixies will use Eidolon's crucible recipes");
         add("starbunclemania.wixie_cauldron.mixer.tooltip", "Use a Wixie Charm on a Fluid Jar. With this, Wixies will use the milk and water in the side tanks for crafting recipes instead of buckets.");
 
+        add("starbunclemania.connections.condenser.take_from", "Condenser linked to %s");
 
         for (Supplier<Glyph> supplier : GlyphRegistry.getGlyphItemMap().values()) {
             Glyph glyph = supplier.get();
