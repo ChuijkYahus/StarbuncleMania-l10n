@@ -148,10 +148,6 @@ repositories {
         name = 'Forge'
         url = "https://maven.minecraftforge.net"
     }
-    maven {
-        name = "OctoStudios"
-        url = uri("https://maven.octo-studios.com/releases")
-    }
     maven { url 'https://modmaven.dev/' }
 
     maven { url 'https://jitpack.io' }
@@ -164,18 +160,17 @@ dependencies {
     implementation "com.alexthw.ars_elemental:ars_elemental-${minecraft_version}:${elemental_version}"
     jarJar(implementation("com.alexthw.sauce:sauce-${minecraft_version}") {
         version {
-            strictly '[0.0.20,)'
+            strictly '[0.0.40,)'
             prefer sauce_version
         }
     }) { transitive = false }
-    implementation "com.hollingsworth.nuggets:nuggets-neoforge-1.21:${nuggets_version}"
+    compileOnly "com.hollingsworth.nuggets:nuggets-neoforge-1.21.1:${nuggets_version}"
     implementation "software.bernie.geckolib:geckolib-neoforge-1.21.1:${geckolib_version}"
-    compileOnly "vazkii.patchouli:Patchouli:1.21-${patchouli_version}"
 
     compileOnly "mezz.jei:jei-1.21.1-neoforge-api:${jei_version}"
     implementation "mezz.jei:jei-1.21.1-neoforge:${jei_version}"
 
-    implementation 'top.theillusivec4.curios:curios-neoforge:9.0.7+1.21'
+    implementation 'top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1'
 
     implementation "mekanism:Mekanism:${minecraft_version}-${mekanism_version}"// core
 

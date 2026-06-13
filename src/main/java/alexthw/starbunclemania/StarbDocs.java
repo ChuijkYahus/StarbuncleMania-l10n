@@ -13,8 +13,11 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 
+import static alexthw.starbunclemania.StarbuncleMania.MODID;
 import static alexthw.starbunclemania.registry.ModRegistry.*;
-import static com.hollingsworth.arsnouveau.api.registry.DocumentationRegistry.*;
+import static com.hollingsworth.arsnouveau.api.registry.DocumentationRegistry.CRAFTING;
+import static com.hollingsworth.arsnouveau.api.registry.DocumentationRegistry.FAMILIARS;
+import static com.hollingsworth.arsnouveau.api.registry.DocumentationRegistry.SOURCE;
 import static com.hollingsworth.arsnouveau.setup.registry.Documentation.addPage;
 import static com.hollingsworth.arsnouveau.setup.registry.RegistryHelper.getRegistryName;
 
@@ -52,7 +55,7 @@ public class StarbDocs {
         var battery = addBasicItem(STARBATTERY.get(), CRAFTING);
         var saddle = addBasicItem(STARSADDLE.get(), CRAFTING);
 
-        addPage(new DocEntryBuilder(StarbuncleMania.MODID, CRAFTING, "starbunclemania.page.wixie_jobs")
+        addPage(new DocEntryBuilder(MODID, CRAFTING, "starbunclemania.page.wixie_jobs")
                 .withIcon(ItemsRegistry.WIXIE_CHARM)
                 .withTextPage("starbunclemania.page.wixie_cook")
                 .withTextPage("starbunclemania.page.wixie_cut")
@@ -73,7 +76,7 @@ public class StarbDocs {
 
     public static DocEntry addBasicItem(ItemLike item, DocCategory category) {
         ItemStack stack = new ItemStack(item);
-        return addPage(new DocEntryBuilder(category, stack.getDescriptionId())
+        return addPage(new DocEntryBuilder(MODID, category, stack.getDescriptionId())
                 .withIcon(item)
                 .withSortNum(100)
                 .withPage(TextEntry.create(Component.translatable("starbunclemania.page." + getRegistryName(item.asItem()).getPath()), stack.getItem().getDescription(), stack)).withCraftingPages(item));
