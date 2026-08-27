@@ -7,6 +7,7 @@ import alexthw.starbunclemania.common.item.FluidScroll;
 import alexthw.starbunclemania.registry.ModRegistry;
 import alexthw.starbunclemania.starbuncle.StarHelper;
 import com.hollingsworth.arsnouveau.common.entity.Starbuncle;
+import com.hollingsworth.arsnouveau.common.entity.goal.carbuncle.GoToBedGoal;
 import com.hollingsworth.arsnouveau.common.entity.goal.carbuncle.StarbyListBehavior;
 import com.hollingsworth.arsnouveau.common.util.PortUtil;
 import net.minecraft.core.BlockPos;
@@ -50,6 +51,7 @@ public class StarbyFluidBehavior extends StarbyListBehavior {
             this.fluidScroll = ItemStack.parseOptional(entity.level().registryAccess(), tag.getCompound("fluidScroll"));
         goals.add(new WrappedGoal(3, new FluidStoreGoal(entity, this)));
         goals.add(new WrappedGoal(3, new FluidExtractGoal(entity, this)));
+        goals.add(new WrappedGoal(3, new GoToBedGoal(entity, this)));
     }
 
     @Override

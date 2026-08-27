@@ -5,6 +5,7 @@ import alexthw.starbunclemania.StarbuncleMania;
 import alexthw.starbunclemania.common.item.cosmetic.StarBalloon;
 import alexthw.starbunclemania.starbuncle.StarHelper;
 import com.hollingsworth.arsnouveau.common.entity.Starbuncle;
+import com.hollingsworth.arsnouveau.common.entity.goal.carbuncle.GoToBedGoal;
 import com.hollingsworth.arsnouveau.common.entity.goal.carbuncle.StarbyListBehavior;
 import com.hollingsworth.arsnouveau.common.util.PortUtil;
 import mekanism.api.Action;
@@ -37,6 +38,7 @@ public class StarbyGasBehavior extends StarbyListBehavior {
         if (tag.contains("gas")) gasStack = ChemicalStack.parseOptional(level.registryAccess(), tag.getCompound("gas"));
         goals.add(new WrappedGoal(3, new GasStoreGoal(entity, this)));
         goals.add(new WrappedGoal(3, new GasExtractGoal(entity, this)));
+        goals.add(new WrappedGoal(3, new GoToBedGoal(entity, this)));
     }
 
     @Override

@@ -4,6 +4,7 @@ import alexthw.starbunclemania.Configs;
 import alexthw.starbunclemania.starbuncle.StarHelper;
 import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.hollingsworth.arsnouveau.common.entity.Starbuncle;
+import com.hollingsworth.arsnouveau.common.entity.goal.carbuncle.GoToBedGoal;
 import com.hollingsworth.arsnouveau.common.entity.goal.carbuncle.StarbyListBehavior;
 import com.hollingsworth.arsnouveau.common.util.PortUtil;
 import net.minecraft.core.BlockPos;
@@ -44,6 +45,7 @@ public class StarbyEnergyBehavior extends StarbyListBehavior {
         }
         goals.add(new WrappedGoal(3, new EnergyExtractGoal(entity, this)));
         goals.add(new WrappedGoal(3, new EnergyStoreGoal(entity, this)));
+        goals.add(new WrappedGoal(3, new GoToBedGoal(entity, this)));
     }
 
     @Override
