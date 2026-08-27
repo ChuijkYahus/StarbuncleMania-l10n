@@ -74,6 +74,9 @@ public class VoidFromStorageGoal extends GoToPosGoal<StarbyVoidBehavior> {
         }
         for (int j = 0; j < iItemHandler.getSlots() && starbuncle.getHeldStack().isEmpty(); j++) {
             ItemStack stack = iItemHandler.getStackInSlot(j);
+            if (stack.isEmpty() || behavior.getValidStorePos(stack) == null) {
+                continue;
+            }
             if (!stack.isEmpty()) {
                 int count = 64;
                 starbuncle.setHeldStack(iItemHandler.extractItem(j, Math.min(count, stack.getMaxStackSize()), false));

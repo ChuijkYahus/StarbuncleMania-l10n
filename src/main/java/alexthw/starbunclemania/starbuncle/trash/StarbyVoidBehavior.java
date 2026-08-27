@@ -2,6 +2,7 @@ package alexthw.starbunclemania.starbuncle.trash;
 
 import alexthw.starbunclemania.StarbuncleMania;
 import com.hollingsworth.arsnouveau.common.entity.Starbuncle;
+import com.hollingsworth.arsnouveau.common.entity.goal.carbuncle.GoToBedGoal;
 import com.hollingsworth.arsnouveau.common.entity.goal.carbuncle.StarbyListBehavior;
 import com.hollingsworth.arsnouveau.common.items.ItemScroll;
 import com.hollingsworth.arsnouveau.common.items.itemscrolls.MimicItemScroll;
@@ -39,6 +40,7 @@ public class StarbyVoidBehavior extends StarbyListBehavior {
         }
         goals.add(new WrappedGoal(3, new SnatchItem(starbuncle, this)));
         goals.add(new WrappedGoal(3, new VoidFromStorageGoal(starbuncle, this)));
+        goals.add(new WrappedGoal(3, new GoToBedGoal(starbuncle, this)));
 
     }
 
@@ -49,7 +51,7 @@ public class StarbyVoidBehavior extends StarbyListBehavior {
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         Item var5 = stack.getItem();
-        if (var5 instanceof ItemScroll scroll) {
+        if (var5 instanceof ItemScroll) {
             this.itemScroll = stack.copy();
             PortUtil.sendMessage(player, Component.translatable("ars_nouveau.filter_set"));
             this.syncTag();
@@ -82,7 +84,8 @@ public class StarbyVoidBehavior extends StarbyListBehavior {
 
     @Override
     public void pickUpItem(ItemEntity itemEntity) {
-        super.pickUpItem(itemEntity);
+        if (itemScroll != null && itemScroll.getItem() instanceof ItemScroll filter && !(filter instanceof MimicItemScroll) && filter.getSortPref(itemEntity.getItem(), itemScroll, null) == ItemScroll.SortPref.INVALID)
+            return;
         starbuncle.setHeldStack(ItemStack.EMPTY);
         itemEntity.remove(Entity.RemovalReason.DISCARDED);
         this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ITEM_PICKUP, starbuncle.getSoundSource(), 1.0F, 1.0F);
